@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Smart Expense Tracker</title>
+
+    <!-- GLOBAL STYLES -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+
+    <!-- GOOGLE FONT (OPTIONAL BUT RECOMMENDED) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="page-enter">
+
+<!-- ===============================
+     NAVBAR
+================================ -->
+<header class="nav glass">
+    <h2 class="logo">💸 SmartTracker</h2>
+    <nav>
+        <a href="#features">Features</a>
+        <a href="#preview">Preview</a>
+        <a href="dashboard.html" class="btn btn-press">Dashboard</a>
+    </nav>
+</header>
+
+<!-- ===============================
+     HERO SECTION
+================================ -->
+<section class="hero">
+    <div class="hero-text fade-in">
+        <h1>
+            Track Your Money. <br>
+            <span class="neon-text">Control Your Future.</span>
+        </h1>
+
+        <p>
+            A smart, visually stunning expense tracker that helps you
+            analyze spending, plan budgets, and grow savings effortlessly.
+        </p>
+
+        <div class="hero-actions">
+            <a href="dashboard.html">
+                <button class="btn pulse btn-press">Get Started →</button>
+            </a>
+            <a href="#features" class="link">Explore Features</a>
+        </div>
+    </div>
+
+    <div class="hero-cards stagger">
+        <div class="card float-slow">
+            <h3>₹ 42,560</h3>
+            <p>Monthly Balance</p>
+        </div>
+        <div class="card float-fast">
+            <h3>📈 +18%</h3>
+            <p>Savings Growth</p>
+        </div>
+        <div class="card float-slow">
+            <h3>🍔 Food</h3>
+            <p>Top Expense</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===============================
+     FEATURES
+================================ -->
+<section id="features" class="features">
+    <h2 class="section-title">Why Smart Expense Tracker?</h2>
+
+    <div class="features-grid stagger">
+        <div class="card">
+            <h3>📊 Smart Analytics</h3>
+            <p>Visualize spending with interactive charts and insights.</p>
+        </div>
+        <div class="card">
+            <h3>🎯 Budget Planning</h3>
+            <p>Set category-wise budgets and receive alerts.</p>
+        </div>
+        <div class="card">
+            <h3>⚡ Fast & Secure</h3>
+            <p>Offline-first with localStorage for instant access.</p>
+        </div>
+        <div class="card">
+            <h3>🌙 Dark Mode UI</h3>
+            <p>Professionally designed glassmorphic dark interface.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===============================
+     PREVIEW SECTION
+================================ -->
+<section id="preview" class="preview">
+    <div class="card preview-card fade-in">
+        <h2>Dashboard Preview</h2>
+        <p>
+            Get a clean overview of income, expenses, and savings —
+            all in one powerful dashboard.
+        </p>
+        <a href="dashboard.html">
+            <button class="btn btn-press">Open Dashboard</button>
+        </a>
+    </div>
+</section>
+
+<!-- ===============================
+     FOOTER
+================================ -->
+<footer class="footer">
+    <p>© 2026 Smart Expense Tracker • Built with 💙</p>
+</footer>
+
+<!-- ===============================
+     PAGE-SPECIFIC STYLES
+================================ -->
+<style>
+/* NAVBAR */
+.nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    backdrop-filter: blur(16px);
+    background: rgba(0,0,0,0.35);
+}
+
+.nav nav a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: var(--text-main);
+    font-weight: 500;
+}
+
+.logo {
+    font-weight: 800;
+}
+
+/* HERO */
+.hero {
+    min-height: 100vh;
+    padding: 140px 8%;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+
+.hero h1 {
+    font-size: clamp(2.5rem, 4vw, 3.5rem);
+}
+
+.neon-text {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-actions {
+    margin-top: 30px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.link {
+    color: var(--secondary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* HERO CARDS */
+.hero-cards {
+    display: grid;
+    gap: 20px;
+}
+
+/* FEATURES */
+.features {
+    padding: 100px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
+}
+
+/* PREVIEW */
+.preview {
+    padding: 100px 8%;
+    display: flex;
+    justify-content: center;
+}
+
+.preview-card {
+    max-width: 500px;
+    text-align: center;
+}
+
+/* FOOTER */
+.footer {
+    padding: 30px;
+    text-align: center;
+    color: var(--text-muted);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    .hero-actions {
+        justify-content: center;
+    }
+}
+</style>
+
+</body>
+</html>
