@@ -1,0 +1,214 @@
+/* ======================================================
+   SMART EXPENSE TRACKER – MOTION SYSTEM
+   Smooth | Premium | FinTech Grade
+====================================================== */
+
+/* ===============================
+   PAGE LOAD ANIMATIONS
+================================ */
+
+/* Fade + slide on page load */
+.page-enter {
+    animation: pageEnter 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+@keyframes pageEnter {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ===============================
+   STAGGERED CHILD ANIMATIONS
+================================ */
+
+.stagger > * {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: staggerFade 0.6s ease forwards;
+}
+
+.stagger > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger > *:nth-child(4) { animation-delay: 0.4s; }
+.stagger > *:nth-child(5) { animation-delay: 0.5s; }
+
+@keyframes staggerFade {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===============================
+   FLOATING CARDS
+================================ */
+
+.float-slow {
+    animation: floatSlow 8s ease-in-out infinite;
+}
+
+.float-fast {
+    animation: floatFast 4s ease-in-out infinite;
+}
+
+@keyframes floatSlow {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-16px);
+    }
+}
+
+@keyframes floatFast {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ===============================
+   HOVER MICRO-INTERACTIONS
+================================ */
+
+/* Soft pulse on important elements */
+.pulse {
+    animation: pulseGlow 2.5s infinite;
+}
+
+@keyframes pulseGlow {
+    0% {
+        box-shadow: 0 0 0 rgba(99,102,241,0);
+    }
+    50% {
+        box-shadow: 0 0 30px rgba(99,102,241,0.45);
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(99,102,241,0);
+    }
+}
+
+/* ===============================
+   BUTTON FEEDBACK
+================================ */
+
+.btn-press {
+    transition: transform 0.15s ease;
+}
+
+.btn-press:active {
+    transform: scale(0.96);
+}
+
+/* ===============================
+   MODAL ANIMATIONS
+================================ */
+
+.modal-enter {
+    animation: modalIn 0.4s ease forwards;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ===============================
+   PROGRESS BAR ANIMATION
+================================ */
+
+.progress-fill {
+    animation: progressGrow 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes progressGrow {
+    from {
+        width: 0;
+    }
+}
+
+/* ===============================
+   ALERT SHAKE (ERROR FEEDBACK)
+================================ */
+
+.shake {
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    50% { transform: translateX(6px); }
+    75% { transform: translateX(-4px); }
+    100% { transform: translateX(0); }
+}
+
+/* ===============================
+   LOADING SKELETON
+================================ */
+
+.skeleton {
+    position: relative;
+    overflow: hidden;
+    background: rgba(255,255,255,0.06);
+}
+
+.skeleton::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,0.15),
+        transparent
+    );
+    animation: shimmer 1.4s infinite;
+}
+
+@keyframes shimmer {
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* ===============================
+   SCROLL REVEAL SUPPORT
+================================ */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===============================
+   REDUCED MOTION SUPPORT
+================================ */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation: none !important;
+        transition: none !important;
+    }
+}
