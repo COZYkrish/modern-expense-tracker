@@ -8,6 +8,7 @@
     <!-- GLOBAL STYLES -->
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,208 +18,104 @@
 
 <body class="page-enter">
 
-<!-- ===============================
-     SIDEBAR
-================================ -->
-<aside class="sidebar">
-    <h2 class="logo">💸 SmartTracker</h2>
+<div class="dashboard">
 
-    <nav class="menu">
-        <a class="active" href="dashboard.html">📊 Dashboard</a>
-        <a href="expenses.html">🧾 Expenses</a>
-        <a href="income.html">💰 Income</a>
-        <a href="analytics.html">📈 Analytics</a>
-        <a href="budget.html">🎯 Budget</a>
-        <a href="settings.html">⚙ Settings</a>
-    </nav>
-</aside>
+    <!-- ===============================
+         SIDEBAR
+    ================================ -->
+    <aside class="sidebar">
+        <h2 class="logo">💸 SmartTracker</h2>
 
-<!-- ===============================
-     MAIN CONTENT
-================================ -->
-<main class="main">
+        <nav class="menu">
+            <a class="active" href="dashboard.html">📊 Dashboard</a>
+            <a href="expenses.html">🧾 Expenses</a>
+            <a href="income.html">💰 Income</a>
+            <a href="analytics.html">📈 Analytics</a>
+            <a href="budget.html">🎯 Budget</a>
+            <a href="settings.html">⚙ Settings</a>
+        </nav>
+    </aside>
 
-    <!-- HEADER -->
-    <header class="topbar">
-        <h1>Dashboard Overview</h1>
-        <button class="btn btn-press">+ Add Transaction</button>
-    </header>
+    <!-- ===============================
+         MAIN CONTENT
+    ================================ -->
+    <main class="dashboard-main">
 
-    <!-- KPI CARDS -->
-    <section class="kpis stagger">
-        <div class="card pulse">
-            <p class="label">Total Balance</p>
-            <h2 id="balance">₹0</h2>
-            <span class="badge success">Updated</span>
-        </div>
+        <!-- HEADER -->
+        <header class="dashboard-header">
+            <h1>Dashboard Overview</h1>
+            <button class="btn btn-press">+ Add Transaction</button>
+        </header>
 
-        <div class="card">
-            <p class="label">Monthly Income</p>
-            <h2 id="income">₹0</h2>
-            <span class="badge success">+12%</span>
-        </div>
+        <!-- KPI CARDS -->
+        <section class="kpis stagger">
+            <div class="card pulse">
+                <p class="label">Total Balance</p>
+                <h2 id="balance">₹0</h2>
+                <span class="badge success">Updated</span>
+            </div>
 
-        <div class="card">
-            <p class="label">Monthly Expense</p>
-            <h2 id="expenses">₹0</h2>
-            <span class="badge danger">−8%</span>
-        </div>
+            <div class="card">
+                <p class="label">Monthly Income</p>
+                <h2 id="income">₹0</h2>
+                <span class="badge success">+12%</span>
+            </div>
 
-        <div class="card">
-            <p class="label">Savings</p>
-            <h2 id="savings">₹0</h2>
-            <span class="badge warning">Goal</span>
-        </div>
-    </section>
+            <div class="card">
+                <p class="label">Monthly Expense</p>
+                <h2 id="expenses">₹0</h2>
+                <span class="badge danger">−8%</span>
+            </div>
 
-    <!-- ANALYTICS -->
-    <section class="analytics">
-        <div class="card">
-            <h3>Monthly Expense Trend</h3>
-            <div class="chart-placeholder skeleton"></div>
-        </div>
+            <div class="card">
+                <p class="label">Savings</p>
+                <h2 id="savings">₹0</h2>
+                <span class="badge warning">Goal</span>
+            </div>
+        </section>
 
-        <div class="card">
-            <h3>Category Breakdown</h3>
-            <div class="chart-placeholder skeleton"></div>
-        </div>
-    </section>
+        <!-- ANALYTICS GRID -->
+        <section class="analytics-grid">
+            <div class="card">
+                <h3>Monthly Expense Trend</h3>
+                <div class="chart-placeholder skeleton"></div>
+            </div>
 
-    <!-- RECENT TRANSACTIONS -->
-    <section class="transactions">
-        <h3>Recent Transactions</h3>
+            <div class="card">
+                <h3>Category Breakdown</h3>
+                <div class="chart-placeholder skeleton"></div>
+            </div>
+        </section>
 
-        <div class="card transaction">
-            <span>🍔 Food</span>
-            <span class="danger">− ₹420</span>
-        </div>
+        <!-- RECENT TRANSACTIONS -->
+        <section>
+            <div class="section-header">
+                <h3>Recent Transactions</h3>
+            </div>
 
-        <div class="card transaction">
-            <span>💼 Salary</span>
-            <span class="success">+ ₹30,000</span>
-        </div>
+            <div class="transactions-grid">
+                <div class="transaction-row">
+                    <span>🍔 Food</span>
+                    <span class="amount negative">− ₹420</span>
+                </div>
 
-        <div class="card transaction">
-            <span>🚕 Transport</span>
-            <span class="danger">− ₹180</span>
-        </div>
-    </section>
+                <div class="transaction-row">
+                    <span>💼 Salary</span>
+                    <span class="amount positive">+ ₹30,000</span>
+                </div>
 
-</main>
+                <div class="transaction-row">
+                    <span>🚕 Transport</span>
+                    <span class="amount negative">− ₹180</span>
+                </div>
+            </div>
+        </section>
 
-<!-- ===============================
-     DASHBOARD STYLES
-================================ -->
-<style>
-/* LAYOUT */
-body {
-    display: flex;
-}
-
-/* SIDEBAR */
-.sidebar {
-    width: 260px;
-    min-height: 100vh;
-    padding: 30px 20px;
-    background: rgba(0,0,0,0.45);
-    backdrop-filter: blur(18px);
-    border-right: 1px solid rgba(255,255,255,0.08);
-}
-
-.sidebar .logo {
-    font-weight: 800;
-    margin-bottom: 40px;
-}
-
-.menu a {
-    display: block;
-    padding: 14px 16px;
-    margin-bottom: 10px;
-    border-radius: 12px;
-    color: var(--text-main);
-    text-decoration: none;
-    font-weight: 500;
-    transition: background 0.3s;
-}
-
-.menu a:hover,
-.menu a.active {
-    background: linear-gradient(
-        135deg,
-        rgba(99,102,241,0.25),
-        rgba(34,211,238,0.25)
-    );
-}
-
-/* MAIN */
-.main {
-    flex: 1;
-    padding: 30px 40px;
-}
-
-/* TOPBAR */
-.topbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-/* KPI */
-.kpis {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
-}
-
-.label {
-    color: var(--text-muted);
-    font-size: 0.85rem;
-    margin-bottom: 6px;
-}
-
-/* ANALYTICS */
-.analytics {
-    margin-top: 40px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-}
-
-.chart-placeholder {
-    height: 220px;
-    border-radius: 14px;
-    margin-top: 20px;
-}
-
-/* TRANSACTIONS */
-.transactions {
-    margin-top: 40px;
-}
-
-.transaction {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 12px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 900px) {
-    .sidebar {
-        display: none;
-    }
-    .main {
-        padding: 20px;
-    }
-    .analytics {
-        grid-template-columns: 1fr;
-    }
-}
-</style>
+    </main>
+</div>
 
 <!-- ===============================
-     LOGIC SCRIPTS
+     LOGIC
 ================================ -->
 <script src="js/storage.js"></script>
 <script src="js/app.js"></script>
