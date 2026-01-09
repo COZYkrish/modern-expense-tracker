@@ -43,7 +43,10 @@
 
         <!-- HEADER -->
         <header class="dashboard-header">
-            <h1>Dashboard Overview</h1>
+            <div>
+                <h1>Dashboard Overview</h1>
+                <p id="topInsight" class="text-muted"></p>
+            </div>
             <button class="btn btn-press">+ Add Transaction</button>
         </header>
 
@@ -58,19 +61,19 @@
             <div class="card">
                 <p class="label">Monthly Income</p>
                 <h2 id="income">₹0</h2>
-                <span class="badge success">+12%</span>
+                <span class="badge success">This month</span>
             </div>
 
             <div class="card">
                 <p class="label">Monthly Expense</p>
                 <h2 id="expenses">₹0</h2>
-                <span class="badge danger">−8%</span>
+                <span class="badge danger">This month</span>
             </div>
 
             <div class="card">
                 <p class="label">Savings</p>
                 <h2 id="savings">₹0</h2>
-                <span class="badge warning">Goal</span>
+                <span class="badge warning">Calculated</span>
             </div>
         </section>
 
@@ -93,22 +96,8 @@
                 <h3>Recent Transactions</h3>
             </div>
 
-            <div class="transactions-grid">
-                <div class="transaction-row">
-                    <span>🍔 Food</span>
-                    <span class="amount negative">− ₹420</span>
-                </div>
-
-                <div class="transaction-row">
-                    <span>💼 Salary</span>
-                    <span class="amount positive">+ ₹30,000</span>
-                </div>
-
-                <div class="transaction-row">
-                    <span>🚕 Transport</span>
-                    <span class="amount negative">− ₹180</span>
-                </div>
-            </div>
+            <!-- JS WILL RENDER HERE -->
+            <div class="transactions-grid"></div>
         </section>
 
     </main>

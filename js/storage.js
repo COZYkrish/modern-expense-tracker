@@ -1,6 +1,6 @@
 /* ======================================================
    SMART EXPENSE TRACKER — DATA STORAGE LAYER
-   localStorage Wrapper (Clean & Scalable)
+   Robust | Scalable | Production-Ready
 ====================================================== */
 
 /* ===============================
@@ -14,43 +14,37 @@ const STORAGE_KEYS = {
 };
 
 /* ===============================
-   GENERIC HELPERS
+   GENERIC STORAGE HELPERS
 ================================ */
 
-/**
- * Get data safely from localStorage
- * @param {string} key
- * @param {any} defaultValue
- */
 function getStorage(key, defaultValue = []) {
     try {
         const data = localStorage.getItem(key);
         return data ? JSON.parse(data) : defaultValue;
     } catch (error) {
-        console.error("Storage read error:", error);
+        console.error(`Error reading ${key}`, error);
         return defaultValue;
     }
 }
 
-/**
- * Save data safely to localStorage
- * @param {string} key
- * @param {any} value
- */
 function setStorage(key, value) {
     try {
         localStorage.setItem(key, JSON.stringify(value));
     } catch (error) {
-        console.error("Storage write error:", error);
+        console.error(`Error writing ${key}`, error);
     }
 }
 
 /* ===============================
-   ID GENERATOR
+   UTILITIES
 ================================ */
 
 function generateId() {
-    return "_" + Math.random().toString(36).substr(2, 9);
+    return "_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
+}
+
+function getCurrentMonth() {
+    return new Date().toISOString().slice(0, 7); // YYYY-MM
 }
 
 /* ===============================
@@ -61,18 +55,30 @@ function getExpenses() {
     return getStorage(STORAGE_KEYS.EXPENSES, []);
 }
 
-function addExpense(expense) {
+function addExpense({ title, amount, category }) {
     const expenses = getExpenses();
+
     expenses.push({
         id: generateId(),
-        ...expense,
+        title,
+        amount: Number(amount),
+        category,
+        month: getCurrentMonth(),
         createdAt: new Date().toISOString()
     });
+
+    setStorage(STORAGE_KEYS.EXPENSES, expenses);
+}
+
+function updateExpense(id, updatedData) {
+    const expenses = getExpenses().map(exp =>
+        exp.id === id ? { ...exp, ...updatedData } : exp
+    );
     setStorage(STORAGE_KEYS.EXPENSES, expenses);
 }
 
 function deleteExpense(id) {
-    const expenses = getExpenses().filter(e => e.id !== id);
+    const expenses = getExpenses().filter(exp => exp.id !== id);
     setStorage(STORAGE_KEYS.EXPENSES, expenses);
 }
 
@@ -84,13 +90,23 @@ function getIncomes() {
     return getStorage(STORAGE_KEYS.INCOMES, []);
 }
 
-function addIncome(income) {
+function addIncome({ title, amount, source }) {
     const incomes = getIncomes();
+
     incomes.push({
         id: generateId(),
-        ...income,
+        title,
+        amount: Number(amount),
+        source,
+        month: getCurrentMonth(),
         createdAt: new Date().toISOString()
     });
+
+    setStorage(STORAGE_KEYS.INCOMES, incomes);
+}
+
+function deleteIncome(id) {
+    const incomes = getIncomes().filter(inc => inc.id !== id);
     setStorage(STORAGE_KEYS.INCOMES, incomes);
 }
 
@@ -104,8 +120,13 @@ function getBudgets() {
 
 function setBudget(category, amount) {
     const budgets = getBudgets();
-    budgets[category] = amount;
+    budgets[category] = Number(amount);
     setStorage(STORAGE_KEYS.BUDGETS, budgets);
+}
+
+function getBudgetForCategory(category) {
+    const budgets = getBudgets();
+    return budgets[category] || 0;
 }
 
 /* ===============================
@@ -120,39 +141,69 @@ function getSettings() {
 }
 
 function updateSettings(newSettings) {
-    const settings = { ...getSettings(), ...newSettings };
-    setStorage(STORAGE_KEYS.SETTINGS, settings);
+    const updated = { ...getSettings(), ...newSettings };
+    setStorage(STORAGE_KEYS.SETTINGS, updated);
 }
 
 /* ===============================
    CALCULATIONS
 ================================ */
 
-function getTotalExpenses() {
-    return getExpenses().reduce((sum, e) => sum + Number(e.amount), 0);
+function getTotalExpenses(month = null) {
+    return getExpenses()
+        .filter(e => !month || e.month === month)
+        .reduce((sum, e) => sum + e.amount, 0);
 }
 
-function getTotalIncome() {
-    return getIncomes().reduce((sum, i) => sum + Number(i.amount), 0);
+function getTotalIncome(month = null) {
+    return getIncomes()
+        .filter(i => !month || i.month === month)
+        .reduce((sum, i) => sum + i.amount, 0);
 }
 
-function getBalance() {
-    return getTotalIncome() - getTotalExpenses();
+function getBalance(month = null) {
+    return getTotalIncome(month) - getTotalExpenses(month);
 }
 
 /* ===============================
-   INSIGHTS (LOGIC BASED)
+   INSIGHTS & ANALYTICS HELPERS
 ================================ */
 
-function getTopExpenseCategory() {
-    const expenses = getExpenses();
-    const categoryMap = {};
+function getTopExpenseCategory(month = null) {
+    const expenses = getExpenses().filter(
+        e => !month || e.month === month
+    );
+
+    const categoryTotals = {};
 
     expenses.forEach(e => {
-        categoryMap[e.category] =
-            (categoryMap[e.category] || 0) + Number(e.amount);
+        categoryTotals[e.category] =
+            (categoryTotals[e.category] || 0) + e.amount;
     });
 
-    return Object.entries(categoryMap)
-        .sort((a, b) => b[1] - a[1])[0]?.[0] || "None";
+    const top = Object.entries(categoryTotals)
+        .sort((a, b) => b[1] - a[1])[0];
+
+    return top ? top[0] : "None";
+}
+
+function getCategoryTotals(month = null) {
+    const totals = {};
+    getExpenses()
+        .filter(e => !month || e.month === month)
+        .forEach(e => {
+            totals[e.category] =
+                (totals[e.category] || 0) + e.amount;
+        });
+    return totals;
+}
+
+/* ===============================
+   RESET / DEBUG HELPERS
+================================ */
+
+function clearAllData() {
+    Object.values(STORAGE_KEYS).forEach(key =>
+        localStorage.removeItem(key)
+    );
 }
