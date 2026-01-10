@@ -46,9 +46,10 @@
             <p id="topInsight" class="text-muted">Track your income and expenses</p>
         </div>
 
-        <button class="btn btn-primary btn-press">
-            + Add Transaction
-        </button>
+        <button class="btn btn-primary btn-press" onclick="openModal()">
+    + Add Transaction
+</button>
+
     </header>
 
     <!-- KPI CARDS -->
@@ -109,6 +110,43 @@
 ================================ -->
 <script src="js/storage.js"></script>
 <script src="js/app.js"></script>
+<!-- ===============================
+     ADD TRANSACTION MODAL
+================================ -->
+<div class="modal" id="transactionModal">
+  <div class="modal-content">
+    <h3>Add Transaction</h3>
 
+    <!-- Type -->
+    <select id="txType">
+      <option value="expense">Expense</option>
+      <option value="income">Income</option>
+    </select>
+
+    <!-- Title -->
+    <input type="text" id="txTitle" placeholder="Title (Lunch, Salary, etc.)" />
+
+    <!-- Amount -->
+    <input type="number" id="txAmount" placeholder="Amount" />
+
+    <!-- Category / Source -->
+    <select id="txCategory">
+      <option>Food</option>
+      <option>Rent</option>
+      <option>Transport</option>
+      <option>Shopping</option>
+      <option>Salary</option>
+    </select>
+
+    <!-- Actions -->
+    <button class="btn btn-primary" onclick="saveTransaction()">
+      Save Transaction
+    </button>
+
+    <button class="btn danger" onclick="closeModal()">
+      Cancel
+    </button>
+  </div>
+</div>
 </body>
 </html>
