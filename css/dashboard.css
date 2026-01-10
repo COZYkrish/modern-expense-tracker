@@ -6,6 +6,17 @@
 /* ===============================
    ROOT DASHBOARD WRAPPER
 ================================ */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 .dashboard {
     display: grid;
     grid-template-columns: 260px 1fr;
@@ -179,4 +190,68 @@
         flex-direction: column;
         align-items: flex-start;
     }
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+.logo {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+.menu {
+    display: flex;
+    flex-direction: column;   /* 🔥 makes items vertical */
+    gap: 12px;
+}
+
+.menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 12px 16px;
+    border-radius: 12px;
+
+    font-size: 15px;
+    font-weight: 500;
+
+    color: #e5e7eb;
+    transition: all 0.25s ease;
+}
+.menu a:hover {
+    background: rgba(99, 102, 241, 0.15);
+}
+.menu a.active {
+    background: linear-gradient(135deg, #6366f1, #22d3ee);
+    color: #ffffff;
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.35);
+}
+/* SIDEBAR */
+.sidebar {
+    width: 240px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(15, 23, 42, 0.95);
+    padding: 24px 16px;
+    z-index: 100;
+}
+
+/* MAIN CONTENT PUSH */
+.dashboard-main {
+    margin-left: 240px; /* MUST MATCH SIDEBAR WIDTH */
+    padding: 32px 40px;
+    min-height: 100vh;
 }

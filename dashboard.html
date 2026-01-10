@@ -18,90 +18,91 @@
 
 <body class="page-enter">
 
-<div class="dashboard">
+<!-- ===============================
+     SIDEBAR
+================================ -->
+<aside class="sidebar">
+    <h2 class="logo">💸 SmartTracker</h2>
 
-    <!-- ===============================
-         SIDEBAR
-    ================================ -->
-    <aside class="sidebar">
-        <h2 class="logo">💸 SmartTracker</h2>
+    <nav class="menu">
+        <a class="active" href="dashboard.html">📊 Dashboard</a>
+        <a href="expenses.html">🧾 Expenses</a>
+        <a href="income.html">💰 Income</a>
+        <a href="analytics.html">📈 Analytics</a>
+        <a href="budget.html">🎯 Budget</a>
+        <a href="settings.html">⚙ Settings</a>
+    </nav>
+</aside>
 
-        <nav class="menu">
-            <a class="active" href="dashboard.html">📊 Dashboard</a>
-            <a href="expenses.html">🧾 Expenses</a>
-            <a href="income.html">💰 Income</a>
-            <a href="analytics.html">📈 Analytics</a>
-            <a href="budget.html">🎯 Budget</a>
-            <a href="settings.html">⚙ Settings</a>
-        </nav>
-    </aside>
+<!-- ===============================
+     MAIN CONTENT
+================================ -->
+<main class="dashboard-main">
 
-    <!-- ===============================
-         MAIN CONTENT
-    ================================ -->
-    <main class="dashboard-main">
+    <!-- HEADER -->
+    <header class="dashboard-header">
+        <div>
+            <h1>Dashboard Overview</h1>
+            <p id="topInsight" class="text-muted">Track your income and expenses</p>
+        </div>
 
-        <!-- HEADER -->
-        <header class="dashboard-header">
-            <div>
-                <h1>Dashboard Overview</h1>
-                <p id="topInsight" class="text-muted"></p>
-            </div>
-            <button class="btn btn-press">+ Add Transaction</button>
-        </header>
+        <button class="btn btn-primary btn-press">
+            + Add Transaction
+        </button>
+    </header>
 
-        <!-- KPI CARDS -->
-        <section class="kpis stagger">
-            <div class="card pulse">
-                <p class="label">Total Balance</p>
-                <h2 id="balance">₹0</h2>
-                <span class="badge success">Updated</span>
-            </div>
+    <!-- KPI CARDS -->
+    <section class="kpis stagger">
+        <div class="card pulse">
+            <p class="label">Total Balance</p>
+            <h2 id="balance">₹0</h2>
+            <span class="badge success">Updated</span>
+        </div>
 
-            <div class="card">
-                <p class="label">Monthly Income</p>
-                <h2 id="income">₹0</h2>
-                <span class="badge success">This month</span>
-            </div>
+        <div class="card">
+            <p class="label">Monthly Income</p>
+            <h2 id="income">₹0</h2>
+            <span class="badge success">This month</span>
+        </div>
 
-            <div class="card">
-                <p class="label">Monthly Expense</p>
-                <h2 id="expenses">₹0</h2>
-                <span class="badge danger">This month</span>
-            </div>
+        <div class="card">
+            <p class="label">Monthly Expense</p>
+            <h2 id="expenses">₹0</h2>
+            <span class="badge danger">This month</span>
+        </div>
 
-            <div class="card">
-                <p class="label">Savings</p>
-                <h2 id="savings">₹0</h2>
-                <span class="badge warning">Calculated</span>
-            </div>
-        </section>
+        <div class="card">
+            <p class="label">Savings</p>
+            <h2 id="savings">₹0</h2>
+            <span class="badge warning">Calculated</span>
+        </div>
+    </section>
 
-        <!-- ANALYTICS GRID -->
-        <section class="analytics-grid">
-            <div class="card">
-                <h3>Monthly Expense Trend</h3>
-                <div class="chart-placeholder skeleton"></div>
-            </div>
+    <!-- ANALYTICS -->
+    <section class="analytics-grid">
+        <div class="card">
+            <h3>Monthly Expense Trend</h3>
+            <div class="chart-placeholder skeleton"></div>
+        </div>
 
-            <div class="card">
-                <h3>Category Breakdown</h3>
-                <div class="chart-placeholder skeleton"></div>
-            </div>
-        </section>
+        <div class="card">
+            <h3>Category Breakdown</h3>
+            <div class="chart-placeholder skeleton"></div>
+        </div>
+    </section>
 
-        <!-- RECENT TRANSACTIONS -->
-        <section>
-            <div class="section-header">
-                <h3>Recent Transactions</h3>
-            </div>
+    <!-- RECENT TRANSACTIONS -->
+    <section>
+        <div class="section-header">
+            <h3>Recent Transactions</h3>
+        </div>
 
-            <!-- JS WILL RENDER HERE -->
-            <div class="transactions-grid"></div>
-        </section>
+        <div class="transactions-grid">
+            <p class="text-muted">No transactions yet</p>
+        </div>
+    </section>
 
-    </main>
-</div>
+</main>
 
 <!-- ===============================
      LOGIC
