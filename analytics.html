@@ -52,21 +52,22 @@
 
     <!-- KPI HOLOGRAM CARDS -->
     <section class="kpis">
-        <div class="card glow">
-            <p class="label">Total Spent</p>
-            <h2>₹18,400</h2>
-        </div>
+    <div class="card glow">
+        <p class="label">Total Spent</p>
+        <h2 id="totalSpent">₹0</h2>
+    </div>
 
-        <div class="card glow">
-            <p class="label">Highest Category</p>
-            <h2>Food</h2>
-        </div>
+    <div class="card glow">
+        <p class="label">Highest Category</p>
+        <h2 id="highestCategory">—</h2>
+    </div>
 
-        <div class="card glow">
-            <p class="label">Monthly Growth</p>
-            <h2>+12%</h2>
-        </div>
-    </section>
+    <div class="card glow">
+        <p class="label">Monthly Growth</p>
+        <h2 id="monthlyGrowth">0%</h2>
+    </div>
+</section>
+
 
     <!-- CHART GRID -->
     <section class="analytics-grid">
@@ -139,7 +140,18 @@ new Chart(document.getElementById("categoryChart"), {
 <script src="js/analyticsData.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="js/charts.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+  if (!document.getElementById("totalSpent")) return;
 
+  const { totalSpent, highestCategory, growth } = getAnalyticsKPIs();
+
+  document.getElementById("totalSpent").innerText = `₹${totalSpent}`;
+  document.getElementById("highestCategory").innerText = highestCategory;
+  document.getElementById("monthlyGrowth").innerText =
+    `${growth > 0 ? "+" : ""}${growth}%`;
+});
+</script>
 
 </body>
 </html>

@@ -57,3 +57,62 @@ function getCategoryBreakdown() {
     values: Object.values(categories)
   };
 }
+function getAnalyticsSummary() {
+  const txns = JSON.parse(localStorage.getItem("transactions")) || [];
+
+  const expenses = txns.filter(t => t.type === "expense");
+
+  const totalSpent = expenses.reduce((s, t) => s + t.amount, 0);
+
+  const categoryMap = {};
+  expenses.forEach(t => {
+    categoryMap[t.category] = (categoryMap[t.category] || 0) + t.amount;
+  });
+
+  const highestCategory = Object.entries(categoryMap)
+    .sort((a, b) => b[1] - a[1])[0]?.[0] || "—";
+
+  return {
+    totalSpent,
+    highestCategory
+  };
+}
+function getAnalyticsKPIs() {
+  const expenses = getExpenses(); // ✅ CORRECT SOURCE
+
+  // TOTAL SPENT
+  const totalSpent = expenses.reduce((sum, e) => sum + e.amount, 0);
+
+  // CATEGORY TOTALS
+  const categoryMap = {};
+  expenses.forEach(e => {
+    categoryMap[e.category] = (categoryMap[e.category] || 0) + e.amount;
+  });
+
+  const highestCategory =
+    Object.entries(categoryMap)
+      .sort((a, b) => b[1] - a[1])[0]?.[0] || "—";
+
+  // MONTHLY GROWTH
+  const monthMap = {};
+  expenses.forEach(e => {
+    const d = new Date(e.createdAt);
+    const key = `${d.getFullYear()}-${d.getMonth()}`;
+    monthMap[key] = (monthMap[key] || 0) + e.amount;
+  });
+
+  const values = Object.values(monthMap);
+  let growth = 0;
+
+  if (values.length >= 2) {
+    const last = values[values.length - 1];
+    const prev = values[values.length - 2];
+    growth = prev ? Math.round(((last - prev) / prev) * 100) : 0;
+  }
+
+  return {
+    totalSpent,
+    highestCategory,
+    growth
+  };
+}
