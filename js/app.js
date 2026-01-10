@@ -60,3 +60,40 @@ function renderDashboard() {
     document.getElementById("expenses").innerText = `₹${expense}`;
     document.getElementById("savings").innerText = `₹${balance}`;
 }
+function renderRecentTransactions() {
+    const container = document.querySelector(".transactions-grid");
+    if (!container) return;
+
+    container.innerHTML = "";
+
+    const expenses = getExpenses();
+    const incomes = getIncomes();
+
+    const combined = [
+        ...expenses.map(e => ({ ...e, type: "expense" })),
+        ...incomes.map(i => ({ ...i, type: "income" }))
+    ].sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    if (combined.length === 0) {
+        container.innerHTML =
+            "<p class='text-muted'>No transactions yet</p>";
+        return;
+    }
+
+    combined.slice(0, 5).forEach(t => {
+        const row = document.createElement("div");
+        row.className = "transaction-row";
+
+        row.innerHTML = `
+            <div>
+                <strong>${t.title}</strong>
+                <p class="text-muted">${t.category || t.source}</p>
+            </div>
+            <span class="${t.type}">
+                ${t.type === "income" ? "+" : "-"}₹${t.amount}
+            </span>
+        `;
+
+        container.appendChild(row);
+    });
+}

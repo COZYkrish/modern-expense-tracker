@@ -395,3 +395,24 @@ body.light .sidebar {
     flex-direction: column;
     gap: 12px;
 }
+.transaction-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.transaction-row:last-child {
+    border-bottom: none;
+}
+
+.transaction-row .income {
+    color: #22c55e;
+    font-weight: 600;
+}
+
+.transaction-row .expense {
+    color: #ef4444;
+    font-weight: 600;
+}
