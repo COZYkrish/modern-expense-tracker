@@ -1,7 +1,7 @@
 /* =====================================================
-   CHARTS.JS
+   charts.js
    Smart Expense Tracker
-   Used by: Dashboard & Analytics pages
+   Dashboard + Analytics
 ===================================================== */
 
 /* -------------------------------------
@@ -12,20 +12,40 @@ Chart.defaults.font.family = "Inter";
 Chart.defaults.font.size = 12;
 Chart.defaults.plugins.legend.labels.usePointStyle = true;
 
-/* =====================================================
-   MONTHLY EXPENSE TREND (LINE CHART)
-===================================================== */
-const expenseCanvas = document.getElementById("expenseChart");
+/* -------------------------------------
+   CHART INSTANCES (for live updates)
+------------------------------------- */
+let expenseChartInstance = null;
+let categoryChartInstance = null;
 
-if (expenseCanvas && typeof getMonthlyExpenseData === "function") {
-  const ctx = expenseCanvas.getContext("2d");
+/* =====================================================
+   UPDATE CHARTS (PUBLIC FUNCTION)
+===================================================== */
+function updateCharts() {
+  renderExpenseChart();
+  renderCategoryChart();
+}
+
+/* =====================================================
+   MONTHLY EXPENSE TREND (LINE)
+===================================================== */
+function renderExpenseChart() {
+  const canvas = document.getElementById("expenseChart");
+  if (!canvas || typeof getMonthlyExpenseData !== "function") return;
+
+  const ctx = canvas.getContext("2d");
   const { months, totals } = getMonthlyExpenseData();
 
+  // destroy old chart
+  if (expenseChartInstance) {
+    expenseChartInstance.destroy();
+  }
+
   const gradient = ctx.createLinearGradient(0, 0, 0, 300);
-  gradient.addColorStop(0, "rgba(99,102,241,0.55)");
+  gradient.addColorStop(0, "rgba(99,102,241,0.6)");
   gradient.addColorStop(1, "rgba(99,102,241,0.05)");
 
-  new Chart(ctx, {
+  expenseChartInstance = new Chart(ctx, {
     type: "line",
     data: {
       labels: months,
@@ -55,7 +75,10 @@ if (expenseCanvas && typeof getMonthlyExpenseData === "function") {
           borderWidth: 1,
           padding: 12,
           titleColor: "#ffffff",
-          bodyColor: "#c7d2fe"
+          bodyColor: "#c7d2fe",
+          callbacks: {
+            label: ctx => `₹${ctx.raw}`
+          }
         }
       },
       scales: {
@@ -63,6 +86,7 @@ if (expenseCanvas && typeof getMonthlyExpenseData === "function") {
           grid: { display: false }
         },
         y: {
+          beginAtZero: true,
           grid: {
             color: "rgba(255,255,255,0.08)"
           },
@@ -76,14 +100,23 @@ if (expenseCanvas && typeof getMonthlyExpenseData === "function") {
 }
 
 /* =====================================================
-   CATEGORY BREAKDOWN (DOUGHNUT CHART)
+   CATEGORY BREAKDOWN (DOUGHNUT)
 ===================================================== */
-const categoryCanvas = document.getElementById("categoryChart");
+function renderCategoryChart() {
+  const canvas = document.getElementById("categoryChart");
+  if (!canvas || typeof getCategoryBreakdown !== "function") return;
 
-if (categoryCanvas && typeof getCategoryBreakdown === "function") {
   const { labels, values } = getCategoryBreakdown();
 
-  new Chart(categoryCanvas, {
+  // nothing to show
+  if (!labels.length) return;
+
+  // destroy old chart
+  if (categoryChartInstance) {
+    categoryChartInstance.destroy();
+  }
+
+  categoryChartInstance = new Chart(canvas, {
     type: "doughnut",
     data: {
       labels,
@@ -97,7 +130,7 @@ if (categoryCanvas && typeof getCategoryBreakdown === "function") {
           "#ec4899"  // Other
         ],
         borderWidth: 0,
-        hoverOffset: 14
+        hoverOffset: 18
       }]
     },
     options: {
@@ -116,12 +149,17 @@ if (categoryCanvas && typeof getCategoryBreakdown === "function") {
           backgroundColor: "#020617",
           padding: 12,
           callbacks: {
-            label: function (ctx) {
-              return `${ctx.label}: ₹${ctx.raw}`;
-            }
+            label: ctx => `${ctx.label}: ₹${ctx.raw}`
           }
         }
       }
     }
   });
 }
+
+/* =====================================================
+   INITIAL LOAD
+===================================================== */
+document.addEventListener("DOMContentLoaded", () => {
+  updateCharts();
+});

@@ -13,7 +13,10 @@
     <!-- FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    >
 </head>
 
 <body class="page-enter">
@@ -43,13 +46,12 @@
     <header class="dashboard-header">
         <div>
             <h1>Dashboard Overview</h1>
-            <p id="topInsight" class="text-muted">Track your income and expenses</p>
+            <p class="text-muted">Track your income and expenses</p>
         </div>
 
         <button class="btn btn-primary btn-press" onclick="openModal()">
-    + Add Transaction
-</button>
-
+            + Add Transaction
+        </button>
     </header>
 
     <!-- KPI CARDS -->
@@ -92,7 +94,6 @@
         </div>
     </section>
 
-
     <!-- RECENT TRANSACTIONS -->
     <section>
         <div class="section-header">
@@ -100,13 +101,12 @@
         </div>
 
         <div class="transactions-grid"></div>
-
     </section>
 
 </main>
 
 <!-- ===============================
-     LOGIC
+     SCRIPTS (ORDER IS IMPORTANT)
 ================================ -->
 <script src="js/storage.js"></script>
 <script src="js/app.js"></script>
@@ -118,39 +118,43 @@
      ADD TRANSACTION MODAL
 ================================ -->
 <div class="modal" id="transactionModal">
-  <div class="modal-content">
-    <h3>Add Transaction</h3>
+    <div class="modal-content">
+        <h3>Add Transaction</h3>
 
-    <!-- Type -->
-    <select id="txType">
-      <option value="expense">Expense</option>
-      <option value="income">Income</option>
-    </select>
+        <select id="txType">
+            <option value="expense">Expense</option>
+            <option value="income">Income</option>
+        </select>
 
-    <!-- Title -->
-    <input type="text" id="txTitle" placeholder="Title (Lunch, Salary, etc.)" />
+        <input
+          type="text"
+          id="txTitle"
+          placeholder="Title (Lunch, Salary, etc.)"
+        >
 
-    <!-- Amount -->
-    <input type="number" id="txAmount" placeholder="Amount" />
+        <input
+          type="number"
+          id="txAmount"
+          placeholder="Amount"
+        >
 
-    <!-- Category / Source -->
-    <select id="txCategory">
-      <option>Food</option>
-      <option>Rent</option>
-      <option>Transport</option>
-      <option>Shopping</option>
-      <option>Salary</option>
-    </select>
+        <select id="txCategory">
+            <option>Food</option>
+            <option>Rent</option>
+            <option>Transport</option>
+            <option>Shopping</option>
+            <option>Salary</option>
+        </select>
 
-    <!-- Actions -->
-    <button class="btn btn-primary" onclick="saveTransaction()">
-      Save Transaction
-    </button>
+        <button class="btn btn-primary" onclick="saveTransaction()">
+            Save Transaction
+        </button>
 
-    <button class="btn danger" onclick="closeModal()">
-      Cancel
-    </button>
-  </div>
+        <button class="btn danger" onclick="closeModal()">
+            Cancel
+        </button>
+    </div>
 </div>
+
 </body>
 </html>
