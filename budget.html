@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Budget | SmartTracker</title>
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="page-enter">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <h2 class="logo">💸 SmartTracker</h2>
+
+    <nav class="menu">
+        <a href="dashboard.html">📊 Dashboard</a>
+        <a href="expenses.html">🧾 Expenses</a>
+        <a href="income.html">💰 Income</a>
+        <a href="analytics.html">📈 Analytics</a>
+        <a class="active" href="budget.html">🎯 Budget</a>
+        <a href="settings.html">⚙ Settings</a>
+    </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="dashboard-main">
+
+    <header class="dashboard-header">
+        <div>
+            <h1>Budget Planning</h1>
+            <p class="text-muted">Control your spending intelligently</p>
+        </div>
+
+        <button class="btn btn-primary" onclick="setBudget()">
+            Set Monthly Budget
+        </button>
+    </header>
+
+    <!-- TOTAL BUDGET -->
+    <section class="card glow">
+        <p class="label">Monthly Budget</p>
+        <h2 id="totalBudget">₹0</h2>
+    </section>
+
+    <!-- CATEGORY BUDGETS -->
+    <section class="analytics-grid">
+
+        <div class="card">
+            <h3>🍔 Food</h3>
+            <div class="progress">
+                <div class="progress-bar" id="foodBar"></div>
+            </div>
+            <p class="text-muted">
+                ₹<span id="foodSpent">0</span> / ₹<span id="foodLimit">0</span>
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🏠 Rent</h3>
+            <div class="progress">
+                <div class="progress-bar" id="rentBar"></div>
+            </div>
+            <p class="text-muted">
+                ₹<span id="rentSpent">0</span> / ₹<span id="rentLimit">0</span>
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🚌 Transport</h3>
+            <div class="progress">
+                <div class="progress-bar" id="transportBar"></div>
+            </div>
+            <p class="text-muted">
+                ₹<span id="transportSpent">0</span> / ₹<span id="transportLimit">0</span>
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🛍 Shopping</h3>
+            <div class="progress">
+                <div class="progress-bar" id="shoppingBar"></div>
+            </div>
+            <p class="text-muted">
+                ₹<span id="shoppingSpent">0</span> / ₹<span id="shoppingLimit">0</span>
+            </p>
+        </div>
+
+    </section>
+
+</main>
+
+<!-- ===============================
+     LOGIC
+================================ -->
+<script>
+/* SAMPLE LOGIC DATA (replace later with real expenses) */
+const budgets = {
+    total: 30000,
+    food: { limit: 8000, spent: 5200 },
+    rent: { limit: 12000, spent: 12000 },
+    transport: { limit: 4000, spent: 1800 },
+    shopping: { limit: 6000, spent: 4600 }
+};
+
+/* RENDER */
+document.getElementById("totalBudget").innerText = "₹" + budgets.total;
+
+function render(category) {
+    const percent = (category.spent / category.limit) * 100;
+    return Math.min(percent, 100);
+}
+
+function updateBar(barId, percent) {
+    const bar = document.getElementById(barId);
+    bar.style.width = percent + "%";
+
+    if (percent < 60) bar.className = "progress-bar safe";
+    else if (percent < 90) bar.className = "progress-bar warning";
+    else bar.className = "progress-bar danger";
+}
+
+/* FOOD */
+foodSpent.innerText = budgets.food.spent;
+foodLimit.innerText = budgets.food.limit;
+updateBar("foodBar", render(budgets.food));
+
+/* RENT */
+rentSpent.innerText = budgets.rent.spent;
+rentLimit.innerText = budgets.rent.limit;
+updateBar("rentBar", render(budgets.rent));
+
+/* TRANSPORT */
+transportSpent.innerText = budgets.transport.spent;
+transportLimit.innerText = budgets.transport.limit;
+updateBar("transportBar", render(budgets.transport));
+
+/* SHOPPING */
+shoppingSpent.innerText = budgets.shopping.spent;
+shoppingLimit.innerText = budgets.shopping.limit;
+updateBar("shoppingBar", render(budgets.shopping));
+
+function setBudget() {
+    alert("Budget setup modal coming next 🚀");
+}
+</script>
+
+</body>
+</html>
