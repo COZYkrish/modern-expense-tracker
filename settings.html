@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Settings | SmartTracker</title>
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+
+    <!-- FONT -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body class="page-enter">
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+    <h2 class="logo">💸 SmartTracker</h2>
+
+    <nav class="menu">
+        <a href="dashboard.html">📊 Dashboard</a>
+        <a href="expenses.html">🧾 Expenses</a>
+        <a href="income.html">💰 Income</a>
+        <a href="analytics.html">📈 Analytics</a>
+        <a href="budget.html">🎯 Budget</a>
+        <a class="active" href="settings.html">⚙ Settings</a>
+    </nav>
+</aside>
+
+<!-- MAIN -->
+<main class="dashboard-main">
+
+    <header class="dashboard-header">
+        <div>
+            <h1>Settings</h1>
+            <p class="text-muted">Customize your experience</p>
+        </div>
+    </header>
+
+    <!-- THEME SETTINGS -->
+    <section class="card">
+        <h3>🌗 Theme Mode</h3>
+        <div class="setting-row">
+            <span>Dark Mode</span>
+            <label class="switch">
+                <input type="checkbox" id="themeToggle">
+                <span class="slider"></span>
+            </label>
+        </div>
+        <small class="text-muted">Preview updates instantly</small>
+    </section>
+
+    <!-- ACCENT COLOR -->
+    <section class="card">
+        <h3>🎨 Accent Color</h3>
+        <div class="color-options">
+            <span class="color blue" onclick="setAccent('#6366f1')"></span>
+            <span class="color cyan" onclick="setAccent('#22d3ee')"></span>
+            <span class="color green" onclick="setAccent('#22c55e')"></span>
+            <span class="color pink" onclick="setAccent('#ec4899')"></span>
+        </div>
+    </section>
+
+    <!-- CURRENCY -->
+    <section class="card">
+        <h3>💱 Currency</h3>
+        <select id="currencySelect" class="select">
+            <option value="₹">₹ INR</option>
+            <option value="$">$ USD</option>
+            <option value="€">€ EUR</option>
+        </select>
+    </section>
+
+    <!-- DATA -->
+    <section class="card danger-card">
+        <h3>⚠ Data Management</h3>
+        <button class="btn danger" onclick="resetData()">Reset All Data</button>
+        <p class="text-muted">This action cannot be undone</p>
+    </section>
+
+</main>
+
+<!-- ===============================
+     SETTINGS LOGIC
+================================ -->
+<script>
+/* LOAD SAVED SETTINGS */
+const themeToggle = document.getElementById("themeToggle");
+const currencySelect = document.getElementById("currencySelect");
+
+/* DARK MODE */
+if (localStorage.getItem("theme") === "light") {
+    document.body.classList.add("light");
+    themeToggle.checked = true;
+}
+
+themeToggle.addEventListener("change", () => {
+    document.body.classList.toggle("light");
+    localStorage.setItem(
+        "theme",
+        document.body.classList.contains("light") ? "light" : "dark"
+    );
+});
+
+/* ACCENT COLOR */
+function setAccent(color) {
+    document.documentElement.style.setProperty("--primary", color);
+    localStorage.setItem("accent", color);
+}
+
+const savedAccent = localStorage.getItem("accent");
+if (savedAccent) {
+    document.documentElement.style.setProperty("--primary", savedAccent);
+}
+
+/* CURRENCY */
+currencySelect.value = localStorage.getItem("currency") || "₹";
+currencySelect.addEventListener("change", () => {
+    localStorage.setItem("currency", currencySelect.value);
+});
+
+/* RESET */
+function resetData() {
+    if (confirm("Are you sure you want to reset all data?")) {
+        localStorage.clear();
+        location.reload();
+    }
+}
+</script>
+
+</body>
+</html>
