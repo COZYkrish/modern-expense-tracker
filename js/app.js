@@ -115,3 +115,11 @@ function renderRecentTransactions() {
         container.appendChild(row);
     });
 }
+window.addEventListener("transactionsUpdated", () => {
+    renderDashboard();
+    renderRecentTransactions();
+    if (typeof updateCharts === "function") updateCharts();
+});
+
+
+

@@ -281,9 +281,7 @@ a {
     .dashboard {
         grid-template-columns: 1fr;
     }
-    .sidebar {
-        display: none; /* mobile drawer later */
-    }
+    
     .dashboard-main {
         grid-column: 1;
         padding: 24px;

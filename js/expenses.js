@@ -28,3 +28,4 @@ function renderExpenses() {
             container.appendChild(card);
         });
 }
+
