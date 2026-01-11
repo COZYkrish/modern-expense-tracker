@@ -33,79 +33,62 @@
      HERO SECTION
 ================================ -->
 <section class="hero">
-    <div class="hero-text fade-in">
-        <h1>
-            Track Your Money.<br>
-            <span class="neon-text">Control Your Future.</span>
-        </h1>
 
-        <p class="text-muted">
-            A modern expense tracker designed to help you monitor spending,
-            analyze patterns, and build smarter financial habits.
-        </p>
+    <!-- LEFT SIDE -->
+    <div class="hero-left fade-in">
 
-        <div class="hero-actions">
-            <a href="dashboard.html">
-                <button class="btn pulse btn-press">Get Started →</button>
-            </a>
-            <a href="#features" class="link">Explore Features</a>
+        <!-- HORIZONTAL STATS -->
+        <div class="hero-stats-horizontal">
+            <div class="card stat-card">
+                <h3>₹ 42,560</h3>
+                <p class="text-muted">Monthly Balance</p>
+            </div>
+
+            <div class="card stat-card">
+                <h3>📈 +18%</h3>
+                <p class="text-muted">Savings Growth</p>
+            </div>
+
+            <div class="card stat-card">
+                <h3>🍔 Food</h3>
+                <p class="text-muted">Top Expense</p>
+            </div>
+        </div>
+
+        <!-- HERO TEXT -->
+        <div class="hero-text">
+            <h1>
+                Track Your Money.<br>
+                <span class="neon-text">Control Your Future.</span>
+            </h1>
+
+            <p class="text-muted">
+                A modern expense tracker designed to help you monitor spending,
+                analyze patterns, and build smarter financial habits.
+            </p>
+
+            <div class="hero-actions">
+                <a href="dashboard.html">
+                    <button class="btn pulse btn-press">Get Started →</button>
+                </a>
+                <a href="#features" class="link">Explore Features</a>
+            </div>
         </div>
     </div>
 
-    <div class="hero-cards stagger">
-        <div class="card float-slow">
-            <h3>₹ 42,560</h3>
-            <p class="text-muted">Monthly Balance</p>
-        </div>
-
-        <div class="card float-fast">
-            <h3>📈 +18%</h3>
-            <p class="text-muted">Savings Growth</p>
-        </div>
-
-        <div class="card float-slow">
-            <h3>🍔 Food</h3>
-            <p class="text-muted">Top Expense</p>
+    <!-- RIGHT SIDE (PROFILE PHOTO) -->
+    <div class="hero-right stagger">
+        <div class="hero-profile fade-in">
+            <div class="profile-ring">
+                <img src="images/WhatsApp Image 2025-08-27 at 14.18.50_bdf3f673.jpg" alt="Krish Sharma">
+            </div>
+            <h3 class="profile-name">Krish Sharma</h3>
+            <p class="profile-role">Smart Finance User</p>
         </div>
     </div>
+
 </section>
 
-<!-- ===============================
-     FEATURES
-================================ -->
-<section id="features" class="features">
-    <h2 class="section-title">Why Smart Expense Tracker?</h2>
-
-    <div class="features-grid stagger">
-        <div class="card">
-            <h3>📊 Smart Analytics</h3>
-            <p class="text-muted">
-                Interactive charts and insights to understand your spending.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>🎯 Budget Planning</h3>
-            <p class="text-muted">
-                Set limits per category and avoid overspending.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>⚡ Fast & Offline</h3>
-            <p class="text-muted">
-                Instant performance using localStorage — no backend needed.
-            </p>
-        </div>
-
-        <div class="card">
-            <h3>🌙 Futuristic UI</h3>
-            <p class="text-muted">
-                Glassmorphic dark UI inspired by fintech products.
-            </p>
-        </div>
-    </div>
-</section>
 
 <!-- ===============================
      PREVIEW
@@ -236,7 +219,66 @@
         justify-content: center;
     }
 }
+/* HERO VISUAL */
+.hero-visual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+/* PROFILE */
+.hero-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* GLOW RING */
+.profile-ring {
+    width: 160px;
+    height: 160px;
+    padding: 6px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6, #60a5fa, #2563eb);
+    box-shadow:
+        0 0 25px rgba(59,130,246,0.9),
+        0 0 60px rgba(59,130,246,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-ring img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #020617;
+}
+
+.profile-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #e5e7eb;
+}
+
+.profile-role {
+    font-size: 0.85rem;
+    color: #94a3b8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+    .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+}
+
 </style>
 
 </body>
 </html>
+
