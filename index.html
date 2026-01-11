@@ -89,6 +89,44 @@
 
 </section>
 
+<!-- ===============================
+     FEATURES
+================================ -->
+<section id="features" class="features">
+    <h2 class="section-title">Why Smart Expense Tracker?</h2>
+
+    <div class="features-grid">
+        <div class="card">
+            <h3>📊 Smart Analytics</h3>
+            <p class="text-muted">
+                Interactive charts and insights to understand your spending.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🎯 Budget Planning</h3>
+            <p class="text-muted">
+                Set limits per category and avoid overspending.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>⚡ Fast & Offline</h3>
+            <p class="text-muted">
+                Instant performance using localStorage — no backend needed.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3>🌙 Futuristic UI</h3>
+            <p class="text-muted">
+                Glassmorphic dark UI inspired by fintech products.
+            </p>
+        </div>
+    </div>
+</section>
+
+
 
 <!-- ===============================
      PREVIEW
@@ -351,25 +389,7 @@
     transform: rotate(-360deg);
     animation: rotateRing 12s linear infinite reverse;
 }
-.profile-ring {
-    animation: rotateRing 12s linear infinite;
-}
 
-@keyframes rotateRing {
-    from { transform: rotate(0deg); }
-    to   { transform: rotate(360deg); }
-}
-
-/* KEEP IMAGE STILL */
-.profile-ring img {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    object-fit: cover;
-    background: #020617;
-    transform: rotate(-360deg);
-    animation: rotateRing 12s linear infinite reverse;
-}
 .profile-ring {
     animation: rotateRing 12s linear infinite;
 }
@@ -423,4 +443,23 @@
         0 0 160px rgba(34,211,238,0.6);
     transition: 0.4s ease;
 }
+.profile-ring {
+    animation: rotateRing 12s linear infinite;
+}
+
+@keyframes rotateRing {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+.profile-ring img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    background: #020617;
+    transform: rotate(-360deg);
+    animation: rotateRing 12s linear infinite reverse;
+}
+
 </style>
