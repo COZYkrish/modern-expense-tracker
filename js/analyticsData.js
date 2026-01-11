@@ -92,3 +92,13 @@ function getAnalyticsSummary() {
     highestCategory
   };
 }
+function getAnalyticsKPIs() {
+  const summary = getAnalyticsSummary();
+
+  // Optional: calculate growth later
+  return {
+    totalSpent: summary.totalSpent,
+    highestCategory: summary.highestCategory,
+    growth: 0
+  };
+}
