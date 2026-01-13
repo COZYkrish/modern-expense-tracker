@@ -1,3 +1,18 @@
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+if (!currentUser) {
+  window.location.href = "auth/login.html";
+}
+/* ===============================
+   SHOW LOGGED-IN USER
+================================ */
+
+const userNameEl = document.getElementById("userName");
+
+if (userNameEl && currentUser) {
+  userNameEl.textContent = currentUser.name;
+}
+
 function getTransactions() {
     return JSON.parse(localStorage.getItem("transactions")) || [];
 }
@@ -121,5 +136,7 @@ window.addEventListener("transactionsUpdated", () => {
     if (typeof updateCharts === "function") updateCharts();
 });
 
-
-
+document.getElementById("logoutBtn")?.addEventListener("click", () => {
+  localStorage.removeItem("currentUser");
+  window.location.href = "auth/login.html";
+});
