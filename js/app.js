@@ -136,5 +136,7 @@ window.addEventListener("transactionsUpdated", () => {
     if (typeof updateCharts === "function") updateCharts();
 });
 
-
-
+// document.getElementById("logoutBtn")?.addEventListener("click", () => {
+//   localStorage.removeItem("currentUser");
+//   window.location.href = "auth/login.html";
+// });

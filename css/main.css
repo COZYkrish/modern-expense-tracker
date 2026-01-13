@@ -284,3 +284,40 @@ select:focus {
   font-weight: 500;
   margin-right: 12px;
 }
+.logout-btn {
+  margin: 20px;
+  padding: 12px;
+  width: calc(100% - 40px);
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  color: #020617;
+  background: linear-gradient(
+    270deg,
+    #ff0080,
+    #ff8c00,
+    #faff00,
+    #00ff85,
+    #00c3ff,
+    #7c7cff,
+    #ff0080
+  );
+  background-size: 600% 600%;
+  animation: rainbowFlow 6s ease infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.logout-btn:hover {
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 10px 30px rgba(255, 255, 255, 0.35);
+}
+
+.logout-btn:active {
+  transform: scale(0.96);
+}
+@keyframes rainbowFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
