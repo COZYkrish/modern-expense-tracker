@@ -1,3 +1,9 @@
+const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+if (!currentUser) {
+  window.location.href = "auth/login.html";
+}
+
 function getTransactions() {
     return JSON.parse(localStorage.getItem("transactions")) || [];
 }
