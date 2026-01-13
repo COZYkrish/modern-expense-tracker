@@ -321,3 +321,30 @@ select:focus {
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+/* ===== MOBILE RESET ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #0f0f0f;
+  color: #fff;
+}
+.container {
+  width: 100%;
+  padding: 1rem;
+}
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  nav a {
+    width: 100%;
+    text-align: center;
+    padding: 0.6rem;
+  }
+}
