@@ -302,3 +302,12 @@ a {
     height: 260px !important;
     margin-top: 16px;
 }
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+@media (max-width: 768px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+}
