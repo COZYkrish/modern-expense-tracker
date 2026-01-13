@@ -348,3 +348,24 @@ body {
     padding: 0.6rem;
   }
 }
+.transaction-item {
+  display: flex;
+  justify-content: space-between;
+}
+@media (max-width: 768px) {
+  .transaction-item {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
+input,
+select,
+button {
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 1rem;
+}
+canvas {
+  max-width: 100%;
+  height: auto !important;
+}
