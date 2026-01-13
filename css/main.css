@@ -279,3 +279,8 @@ select:focus {
     );
     border-radius: 10px;
 }
+.user-name {
+  color: #e5e7eb;
+  font-weight: 500;
+  margin-right: 12px;
+}
