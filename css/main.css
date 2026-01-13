@@ -369,3 +369,31 @@ canvas {
   max-width: 100%;
   height: auto !important;
 }
+.mobile-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: #111;
+    justify-content: space-around;
+    padding: 0.6rem 0;
+  }
+
+  body {
+    padding-bottom: 60px;
+  }
+}
+/* ===============================
+   MOBILE SIDEBAR FIX
+================================ */
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+}

@@ -104,3 +104,12 @@ body {
 .switch a:hover {
   text-decoration: underline;
 }
+.auth-card {
+  max-width: 400px;
+  margin: auto;
+}
+@media (max-width: 768px) {
+  .auth-card {
+    width: 95%;
+  }
+}
