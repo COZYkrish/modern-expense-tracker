@@ -89,7 +89,7 @@ Open index.html in your browser.
 
 📤 Export Reports (CSV / PDF)
 
-📱 Progressive Web App (PWA)
+📱 Progressive Web App 
 
 🔔 Smart Expense Alerts
 
