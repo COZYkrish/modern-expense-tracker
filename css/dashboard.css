@@ -311,3 +311,12 @@ a {
     grid-template-columns: 1fr;
   }
 }
+.main-content {
+  margin-left: 260px;
+}
+@media (max-width: 768px) {
+  .main-content {
+    margin-left: 0;
+    width: 100%;
+  }
+}

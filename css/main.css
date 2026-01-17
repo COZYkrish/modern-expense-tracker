@@ -397,3 +397,33 @@ canvas {
     display: none;
   }
 }
+.mobile-nav {
+  display: none;
+}
+
+/* MOBILE ONLY */
+@media (max-width: 768px) {
+  .mobile-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #0d0d0d;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 1000;
+    border-top: 1px solid #222;
+  }
+
+  .mobile-nav a {
+    font-size: 1.4rem;
+    color: white;
+    text-decoration: none;
+  }
+
+  body {
+    padding-bottom: 70px;
+  }
+}

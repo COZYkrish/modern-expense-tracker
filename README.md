@@ -46,20 +46,20 @@ This project helps users **track income, expenses, budgets, and financial insigh
 
 ## 🛠️ Technologies Used
 
-- **HTML5** – Structure
-- **CSS3** – Styling & Animations
-- **JavaScript (ES6)** – Functionality
-- **Chart.js** – Data Visualization
-- **LocalStorage API** – Data Persistence
+- **HTML5** – Structure.
+- **CSS3** – Styling & Animations.
+- **JavaScript (ES6)** – Functionality.
+- **Chart.js** – Data Visualization.
+- **LocalStorage API** – Data Persistence.
 
 ---
 
 ## 📊 Analytics Included
 
-- Monthly Expense Trends
-- Income vs Expense Comparison
-- Category-wise Expense Breakdown
-- Budget Utilization Tracking
+- Monthly Expense Trends.
+- Income vs Expense Comparison.
+- Category-wise Expense Breakdown.
+- Budget Utilization Tracking.
 
 ---
 
@@ -82,6 +82,7 @@ Open index.html in your browser
 (No server required)
 
 🌟 Future Enhancements
+
 🔐 Authentication System
 
 ☁️ Cloud Database Integration
