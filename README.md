@@ -3,7 +3,7 @@
 A **modern, responsive, and interactive Expense Tracker** web application built using **HTML, CSS, and JavaScript**.  
 This project helps users **track income, expenses, budgets, and financial insights** with a clean UI and smooth animations.
 
----
+
 
 ## 🚀 Features
 
