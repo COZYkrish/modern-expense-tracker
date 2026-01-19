@@ -58,8 +58,8 @@ This project helps users **track income, expenses, budgets, and financial insigh
 
 - Monthly Expense Trends.
 - Income vs Expense Comparison.
-- Category-wise Expense Breakdown.
-- Budget Utilization Tracking.
+- Category-wise Expense Breakdown
+- Budget Utilization Tracking
 
 ---
 
