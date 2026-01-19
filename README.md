@@ -48,16 +48,16 @@ This project helps users **track income, expenses, budgets, and financial insigh
 
 - **HTML5** – Structure.
 - **CSS3** – Styling & Animations.
-- **JavaScript (ES6)** – Functionality.
-- **Chart.js** – Data Visualization.
-- **LocalStorage API** – Data Persistence.
+- **JavaScript (ES6)** – Functionality
+- **Chart.js** – Data Visualization
+- **LocalStorage API** – Data Persistence
 
 ---
 
 ## 📊 Analytics Included
 
-- Monthly Expense Trends.
-- Income vs Expense Comparison.
+- Monthly Expense Trends
+- Income vs Expense Comparison
 - Category-wise Expense Breakdown
 - Budget Utilization Tracking
 
