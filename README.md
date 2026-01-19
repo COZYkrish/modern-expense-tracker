@@ -71,7 +71,7 @@ This project helps users **track income, expenses, budgets, and financial insigh
 - Clean Typography
 - Dark-themed Modern Layout
 
----
+
 
 ## 📦 How to Run Locally
 
