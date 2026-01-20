@@ -10,7 +10,7 @@ This project helps users **track income, expenses, budgets, and financial insigh
 - 📊 Interactive Dashboard with KPIs
 - 💰 Add, Edit & Delete Expenses
 - 💵 Income Management
-- 📈 Analytics & Charts (Monthly Trends)...
+- 📈 Analytics & Charts (Monthly Trends).
 - 🎯 Budget Planning
 - ⚙️ User Preferences & Settings
 - 🌙 Modern UI with animations
