@@ -16,7 +16,7 @@ This project helps users **track income, expenses, budgets, and financial insigh
 - 🌙 Modern UI with animations
 - 📱 Fully Responsive Design
 
----
+
 
 ## 🗂️ Project Structure
 
