@@ -79,7 +79,7 @@ This project helps users **track income, expenses, budgets, and financial insigh
    ```bash
    git clone https://github.com/your-username/expense-tracker.git
 Open index.html in your browser.
-(No server required)
+
 
 🌟 Future Enhancements
 
