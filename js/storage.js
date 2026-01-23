@@ -9,7 +9,7 @@
 const STORAGE_KEYS = {
     EXPENSES: "expenses",
     INCOMES: "incomes",
-    // BUDGETS: "budgets",
+    BUDGETS: "budgets",
     SETTINGS: "settings"
 };
 
