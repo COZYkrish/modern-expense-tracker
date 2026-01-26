@@ -51,9 +51,9 @@ function getCurrentMonth() {
    EXPENSES
 ================================ */
 
-// function getExpenses() {
-//     return getStorage(STORAGE_KEYS.EXPENSES, []);
-// }
+function getExpenses() {
+    return getStorage(STORAGE_KEYS.EXPENSES, []);
+}
 
 function addExpense({ title, amount, category }) {
     const expenses = getExpenses();
