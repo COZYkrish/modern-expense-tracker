@@ -93,12 +93,12 @@ function renderIncomeList() {
    INIT
 ================================ */
 
-// document.addEventListener("DOMContentLoaded", () => {
-//     renderIncomeList();
+document.addEventListener("DOMContentLoaded", () => {
+    renderIncomeList();
 
-//     document
-//         .getElementById("addIncomeBtn")
-//         .addEventListener("click", openIncomeModal);
+    document
+        .getElementById("addIncomeBtn")
+        .addEventListener("click", openIncomeModal);
 
     document
         .getElementById("saveIncomeBtn")
