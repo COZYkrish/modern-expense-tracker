@@ -100,11 +100,11 @@ function renderIncomeList() {
 //         .getElementById("addIncomeBtn")
 //         .addEventListener("click", openIncomeModal);
 
-//     document
-//         .getElementById("saveIncomeBtn")
-//         .addEventListener("click", saveIncome);
+    document
+        .getElementById("saveIncomeBtn")
+        .addEventListener("click", saveIncome);
 
-//     document
-//         .getElementById("cancelIncomeBtn")
-//         .addEventListener("click", closeIncomeModal);
-// });
+    document
+        .getElementById("cancelIncomeBtn")
+        .addEventListener("click", closeIncomeModal);
+});
