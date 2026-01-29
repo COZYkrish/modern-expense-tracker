@@ -14,13 +14,13 @@ function saveTransactions(txns) {
    MODAL CONTROLS
 ================================ */
 
-function openIncomeModal() {
-    document.getElementById("incomeModal").style.display = "flex";
-}
+// function openIncomeModal() {
+//     document.getElementById("incomeModal").style.display = "flex";
+// }
 
-function closeIncomeModal() {
-    document.getElementById("incomeModal").style.display = "none";
-}
+// function closeIncomeModal() {
+//     document.getElementById("incomeModal").style.display = "none";
+// }
 
 /* ===============================
    SAVE INCOME
