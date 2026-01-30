@@ -15,11 +15,11 @@ function saveTransactions(txns) {
 ================================ */
 
 function openIncomeModal() {
-    document.getElementById("incomeModal").style.display = "flex";
-}
+//     document.getElementById("incomeModal").style.display = "flex";
+// }
 
-function closeIncomeModal() {
-    document.getElementById("incomeModal").style.display = "none";
+// function closeIncomeModal() {
+//     document.getElementById("incomeModal").style.display = "none";
 }
 
 /* ===============================
