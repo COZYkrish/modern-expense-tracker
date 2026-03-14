@@ -1,30 +1,30 @@
-const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+// const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-if (!currentUser) {
-  window.location.href = "auth/login.html";
-}
-/* ===============================
-   SHOW LOGGED-IN USER
-================================ */
+// if (!currentUser) {
+//   window.location.href = "auth/login.html";
+// }
+// /* ===============================
+//    SHOW LOGGED-IN USER
+// ================================ */
 
-const userNameEl = document.getElementById("userName");
+// const userNameEl = document.getElementById("userName");
 
-if (userNameEl && currentUser) {
-  userNameEl.textContent = currentUser.name;
-}
+// if (userNameEl && currentUser) {
+//   userNameEl.textContent = currentUser.name;
+// }
 
-function getTransactions() {
-    return JSON.parse(localStorage.getItem("transactions")) || [];
-}
+// function getTransactions() {
+//     return JSON.parse(localStorage.getItem("transactions")) || [];
+// }
 
-function saveTransactions(txns) {
-    localStorage.setItem("transactions", JSON.stringify(txns));
-}
+// function saveTransactions(txns) {
+//     localStorage.setItem("transactions", JSON.stringify(txns));
+// }
 
-document.addEventListener("DOMContentLoaded", () => {
-    renderDashboard();
-    renderRecentTransactions();
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//     renderDashboard();
+//     renderRecentTransactions();
+// });
 
 /* ===============================
    MODAL CONTROLS
