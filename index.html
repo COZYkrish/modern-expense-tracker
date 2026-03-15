@@ -587,8 +587,307 @@
             border-color: rgba(103, 184, 255, 0.28);
             box-shadow: 0 24px 60px rgba(0, 0, 0, 0.3);
         }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            display: grid;
+            place-items: center;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(77, 246, 210, 0.12), rgba(103, 184, 255, 0.14));
+            border: 1px solid rgba(103, 184, 255, 0.18);
+            color: var(--cyan);
+            font-family: "Orbitron", sans-serif;
+            font-size: 0.9rem;
+            letter-spacing: 0.08em;
+        }
+
+        .feature-card h3,
+        .preview-card h3 {
+            margin: 20px 0 10px;
+            font-size: 1.12rem;
+        }
+
+        .feature-card p,
+        .preview-card p {
+            margin: 0;
+            color: var(--ink);
+        }
+
+        .feature-meta {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 22px;
+            padding-top: 16px;
+            border-top: 1px solid var(--line-soft);
+            color: #cfe5ff;
+            font-size: 0.84rem;
+        }
+
+        .preview-grid {
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: stretch;
+        }
+
+        .dashboard-mock {
+            display: grid;
+            gap: 16px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            margin-top: 28px;
+        }
+
+        .mini-panel {
+            padding: 18px;
+            border-radius: 18px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .mini-panel label {
+            display: block;
+            color: var(--ink);
+            font-size: 0.74rem;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .mini-panel strong {
+            display: block;
+            margin-top: 8px;
+            font-size: 1.5rem;
+        }
+
+        .signal-bars {
+            display: flex;
+            align-items: end;
+            gap: 8px;
+            height: 92px;
+            margin-top: 18px;
+        }
+
+        .signal-bars span {
+            flex: 1;
+            border-radius: 999px 999px 10px 10px;
+            background: linear-gradient(180deg, rgba(77, 246, 210, 0.95), rgba(103, 184, 255, 0.18));
+            animation: bars 4.6s ease-in-out infinite;
+        }
+
+        .signal-bars span:nth-child(1) { height: 42%; animation-delay: 0.1s; }
+        .signal-bars span:nth-child(2) { height: 78%; animation-delay: 0.3s; }
+        .signal-bars span:nth-child(3) { height: 60%; animation-delay: 0.5s; }
+        .signal-bars span:nth-child(4) { height: 92%; animation-delay: 0.7s; }
+        .signal-bars span:nth-child(5) { height: 68%; animation-delay: 0.9s; }
+
+        .footer {
+            width: min(var(--max-width), calc(100% - 32px));
+            margin: 0 auto;
+            padding: 0 0 44px;
+            color: var(--ink);
+            text-align: center;
+        }
+
+        .reveal-up {
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.7s ease, transform 0.7s ease;
+        }
+
+        .reveal-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        @keyframes scan {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(100%); }
+        }
+
+        @keyframes drift {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        @keyframes driftReverse {
+            from { transform: translate(-50%, -50%) rotate(360deg); }
+            to { transform: translate(-50%, -50%) rotate(0deg); }
+        }
+
+        @keyframes bars {
+            0%, 100% { transform: scaleY(0.88); opacity: 0.7; }
+            50% { transform: scaleY(1.08); opacity: 1; }
+        }
+
+        @media (max-width: 1080px) {
+            .hero,
+            .preview-grid,
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-panel {
+                min-height: auto;
+            }
+
+            .section-heading {
+                align-items: start;
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 760px) {
+            .nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .logo-wrap {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+                margin-left: 0;
+            }
+
+            .hero {
+                padding-top: 24px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.5rem, 12vw, 3.6rem);
+            }
+
+            .hero-metrics,
+            .dashboard-mock {
+                grid-template-columns: 1fr;
+            }
+
+            .portrait-frame {
+                height: 360px;
+            }
+
+            .orbit.one {
+                width: 280px;
+                height: 280px;
+            }
+
+            .orbit.two {
+                width: 340px;
+                height: 340px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
     </style>
 </head>
 <body class="page-enter">
-    <div class="page-shell"></div>
+    <div class="page-shell">
+        <header class="nav">
+            <div class="logo-wrap">
+                <div class="logo-badge">ST</div>
+                <div>
+                    <div class="logo">SmartTracker</div>
+                    <span class="logo-sub">Finance Control Interface</span>
+                </div>
+            </div>
+
+            <nav class="nav-links">
+                <a class="nav-link" href="#features">Features</a>
+                <a class="nav-link" href="#preview">Preview</a>
+                <span class="user-chip" id="userName">Guest Mode</span>
+                <a class="btn-primary" href="dashboard.html">Launch Dashboard</a>
+            </nav>
+        </header>
+
+        <main>
+            <section class="hero">
+                <div class="hero-copy-wrap reveal-up visible">
+                    <span class="eyebrow">Adaptive finance cockpit</span>
+                    <h1>
+                        Future-ready
+                        <span>expense tracking</span>
+                    </h1>
+                    <p class="hero-copy">
+                        A sharper landing experience for your tracker: immersive visual layers, responsive status cards,
+                        and a high-tech interface language that makes budgeting feel alive instead of static.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a class="btn-primary" href="dashboard.html">Enter System</a>
+                        <a class="btn-ghost" href="#features">View Modules</a>
+                    </div>
+
+                    <div class="hero-metrics">
+                        <article class="metric reveal-up">
+                            <span class="metric-label">Monthly balance</span>
+                            <strong>Rs 42,560</strong>
+                            <small>+12.4% vs last cycle</small>
+                        </article>
+                        <article class="metric reveal-up">
+                            <span class="metric-label">Automation score</span>
+                            <strong>94%</strong>
+                            <small>Budgets synced live</small>
+                        </article>
+                        <article class="metric reveal-up">
+                            <span class="metric-label">Top category</span>
+                            <strong>Food</strong>
+                            <small>Optimized this week</small>
+                        </article>
+                    </div>
+                </div>
+
+                <aside class="hero-panel reveal-up">
+                    <div class="scanline"></div>
+                    <div class="panel-topbar">
+                        <div class="status-pill">
+                            <span class="status-dot"></span>
+                            Live spending stream
+                        </div>
+                        <div class="panel-code">UX-06 / Quantum View</div>
+                    </div>
+
+                    <div class="profile-shell">
+                        <div class="orbit one"></div>
+                        <div class="orbit two"></div>
+
+                        <div class="portrait-card">
+                            <div class="portrait-frame">
+                                <img src="images/WhatsApp Image 2025-08-27 at 14.18.50_bdf3f673.jpg" alt="SmartTracker member profile" />
+                            </div>
+
+                            <div class="portrait-tag">
+                                <span class="tag-label">Savings pulse</span>
+                                <strong class="tag-value">+18%</strong>
+                            </div>
+
+                            <div class="portrait-kpi">
+                                <span>Weekly flow</span>
+                                <strong>Rs 8,420</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="panel-footer">
+                        <div>
+                            <small>Primary user</small>
+                            <strong>Krish Sharma</strong>
+                        </div>
+                        <div>
+                            <small>Interface mode</small>
+                            <strong>Futuristic Glass UI</strong>
+                        </div>
+                    </div>
+                </aside>
+            </section>
+        </main>
+    </div>
 </html>
