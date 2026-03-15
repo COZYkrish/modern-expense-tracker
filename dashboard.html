@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard | SmartTracker</title>
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <script src="js/session.js"></script>
+    <script src="js/protected-page.js"></script>
+</head>
+<body class="page-enter">
+    <aside class="sidebar">
+        <h2 class="logo">SmartTracker</h2>
+        <div class="user-box">
+            <span class="user-name" id="userName"></span>
+        </div>
+
+        <nav class="menu">
+            <a class="active" href="dashboard.html">Dashboard</a>
+            <a href="expenses.html">Expenses</a>
+            <a href="income.html">Income</a>
+            <a href="analytics.html">Analytics</a>
+            <a href="budget.html">Budget</a>
+            <a href="settings.html">Settings</a>
+        </nav>
+
+        <button id="logoutBtn" class="logout-btn" type="button">Logout</button>
+    </aside>
+
+    <main class="dashboard-main">
+        <header class="dashboard-header">
+            <div>
+                <h1>Dashboard Overview</h1>
+                <p>Monitor balance, spending flow, and savings from one futuristic control surface.</p>
+            </div>
+
+            <button class="btn btn-primary btn-press" type="button" onclick="openModal()">
+                Add Transaction
+            </button>
+        </header>
+
+        <section class="kpis stagger">
+            <div class="card pulse">
+                <p class="label">Total Balance</p>
+                <h2 id="balance">Rs 0</h2>
+                <span class="badge success">Live sync</span>
+            </div>
+
+            <div class="card">
+                <p class="label">Monthly Income</p>
+                <h2 id="income">Rs 0</h2>
+                <span class="badge success">This month</span>
+            </div>
+
+            <div class="card">
+                <p class="label">Monthly Expense</p>
+                <h2 id="expenses">Rs 0</h2>
+                <span class="badge danger">This month</span>
+            </div>
+
+            <div class="card">
+                <p class="label">Savings</p>
+                <h2 id="savings">Rs 0</h2>
+                <span class="badge warning">Calculated</span>
+            </div>
+        </section>
+
+        <section class="analytics-grid">
+            <div class="card chart-card">
+                <h3>Monthly Expense Trend</h3>
+                <canvas id="expenseChart"></canvas>
+            </div>
+
+            <div class="card chart-card">
+                <h3>Category Breakdown</h3>
+                <canvas id="categoryChart"></canvas>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="section-header">
+                <h3>Recent Transactions</h3>
+            </div>
+            <div class="transactions-grid"></div>
+        </section>
+    </main>
+
+    <div class="modal" id="transactionModal">
+        <div class="modal-content">
+            <h3>Add Transaction</h3>
+
+            <select id="txType">
+                <option value="expense">Expense</option>
+                <option value="income">Income</option>
+            </select>
+
+            <input type="text" id="txTitle" placeholder="Title" />
+            <input type="number" id="txAmount" placeholder="Amount" />
+
+            <select id="txCategory">
+                <option>Food</option>
+                <option>Rent</option>
+                <option>Transport</option>
+                <option>Shopping</option>
+                <option>Salary</option>
+                <option>Freelance</option>
+                <option>Other</option>
+            </select>
+
+            <div class="modal-actions">
+                <button class="btn btn-primary" type="button" onclick="saveTransaction()">Save Transaction</button>
+                <button class="btn-outline" type="button" onclick="closeModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <nav class="mobile-nav">
+        <a href="dashboard.html">D</a>
+        <a href="expenses.html">E</a>
+        <a href="income.html">I</a>
+        <a href="analytics.html">A</a>
+    </nav>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/analyticsData.js" defer></script>
+    <script src="js/charts.js" defer></script>
+    <script src="js/app.js" defer></script>
+</body>
+</html>
