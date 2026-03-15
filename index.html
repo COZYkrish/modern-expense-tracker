@@ -1004,9 +1004,14 @@
         </footer>
     </div>
 
+    <script src="js/session.js"></script>
     <script>
-        const currentUser = JSON.parse(localStorage.getItem("currentUser") || "null");
+        const currentUser = window.AuthSession.getCurrentUser();
         const userNameEl = document.getElementById("userName");
+
+        if (!currentUser) {
+            window.location.href = "auth/login.html";
+        }
 
         if (userNameEl && currentUser && currentUser.name) {
             userNameEl.textContent = currentUser.name;

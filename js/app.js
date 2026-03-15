@@ -1,18 +1,3 @@
-const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-
-if (!currentUser) {
-  window.location.href = "auth/login.html";
-}
-/* ===============================
-   SHOW LOGGED-IN USER
-================================ */
-
-const userNameEl = document.getElementById("userName");
-
-if (userNameEl && currentUser) {
-  userNameEl.textContent = currentUser.name;
-}
-
 function getTransactions() {
     return JSON.parse(localStorage.getItem("transactions")) || [];
 }
@@ -59,7 +44,7 @@ function saveTransaction() {
         id: Date.now(),
         title,
         amount,
-        type,                 // "expense" | "income"
+        type,
         category,
         date: new Date().toISOString().split("T")[0]
     };
@@ -71,7 +56,6 @@ function saveTransaction() {
     renderDashboard();
     renderRecentTransactions();
 
-    // 🔥 UPDATE CHARTS LIVE
     if (typeof updateCharts === "function") {
         updateCharts();
     }
@@ -85,16 +69,19 @@ function renderDashboard() {
     const txns = getTransactions();
 
     const income = txns
-        .filter(t => t.type === "income")
-        .reduce((sum, t) => sum + t.amount, 0);
+        .filter((transaction) => transaction.type === "income")
+        .reduce((sum, transaction) => sum + Number(transaction.amount || 0), 0);
 
     const expense = txns
-        .filter(t => t.type === "expense")
-        .reduce((sum, t) => sum + t.amount, 0);
+        .filter((transaction) => transaction.type === "expense")
+        .reduce((sum, transaction) => sum + Number(transaction.amount || 0), 0);
 
-    document.getElementById("income").innerText = `₹${income}`;
-    document.getElementById("expenses").innerText = `₹${expense}`;
-    document.getElementById("savings").innerText = `₹${income - expense}`;
+    const balance = income - expense;
+
+    document.getElementById("income").innerText = `Rs ${income}`;
+    document.getElementById("expenses").innerText = `Rs ${expense}`;
+    document.getElementById("savings").innerText = `Rs ${balance}`;
+    document.getElementById("balance").innerText = `Rs ${balance}`;
 }
 
 function renderRecentTransactions() {
@@ -108,35 +95,33 @@ function renderRecentTransactions() {
     );
 
     if (txns.length === 0) {
-        container.innerHTML =
-            "<p class='text-muted'>No transactions yet</p>";
+        container.innerHTML = "<p class='text-muted'>No transactions yet</p>";
         return;
     }
 
-    txns.slice(0, 5).forEach(t => {
+    txns.slice(0, 5).forEach((transaction) => {
         const row = document.createElement("div");
         row.className = "transaction-row";
 
         row.innerHTML = `
             <div>
-                <strong>${t.title}</strong>
-                <p class="text-muted">${t.category}</p>
+                <strong>${transaction.title}</strong>
+                <p class="text-muted">${transaction.category}</p>
             </div>
-            <span class="${t.type}">
-                ${t.type === "income" ? "+" : "-"}₹${t.amount}
+            <span class="${transaction.type}">
+                ${transaction.type === "income" ? "+" : "-"}Rs ${transaction.amount}
             </span>
         `;
 
         container.appendChild(row);
     });
 }
+
 window.addEventListener("transactionsUpdated", () => {
     renderDashboard();
     renderRecentTransactions();
-    if (typeof updateCharts === "function") updateCharts();
-});
 
-document.getElementById("logoutBtn")?.addEventListener("click", () => {
-  localStorage.removeItem("currentUser");
-  window.location.href = "auth/login.html";
+    if (typeof updateCharts === "function") {
+        updateCharts();
+    }
 });

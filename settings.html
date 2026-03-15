@@ -88,6 +88,8 @@
 <!-- ===============================
      SETTINGS LOGIC
 ================================ -->
+<script src="js/session.js"></script>
+<script src="js/protected-page.js"></script>
 <script>
 /* LOAD SAVED SETTINGS */
 const themeToggle = document.getElementById("themeToggle");
@@ -127,7 +129,9 @@ currencySelect.addEventListener("change", () => {
 /* RESET */
 function resetData() {
     if (confirm("Are you sure you want to reset all data?")) {
-        localStorage.clear();
+        ["transactions", "expenses", "incomes", "budgets", "settings", "theme", "accent", "currency"].forEach((key) => {
+            localStorage.removeItem(key);
+        });
         location.reload();
     }
 }
