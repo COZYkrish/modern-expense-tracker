@@ -888,6 +888,166 @@
                     </div>
                 </aside>
             </section>
+
+            <section id="features" class="section">
+                <div class="section-heading reveal-up">
+                    <div>
+                        <span class="kicker">Core modules</span>
+                        <h2>Designed like a fintech command center</h2>
+                    </div>
+                    <p>
+                        Each card now behaves like an interactive panel with motion-aware highlights, stronger contrast,
+                        and clearer information density for a more premium first impression.
+                    </p>
+                </div>
+
+                <div class="feature-grid">
+                    <article class="feature-card reveal-up tilt-card">
+                        <div class="feature-icon">AN</div>
+                        <h3>Smart Analytics</h3>
+                        <p>Signal-driven visuals help users read trends, spikes, and category drift faster.</p>
+                        <div class="feature-meta">
+                            <span>Live insights</span>
+                            <span>01</span>
+                        </div>
+                    </article>
+
+                    <article class="feature-card reveal-up tilt-card">
+                        <div class="feature-icon">BG</div>
+                        <h3>Budget Guardrails</h3>
+                        <p>Limits and pacing cues feel active, so overspending warnings stand out immediately.</p>
+                        <div class="feature-meta">
+                            <span>Adaptive alerts</span>
+                            <span>02</span>
+                        </div>
+                    </article>
+
+                    <article class="feature-card reveal-up tilt-card">
+                        <div class="feature-icon">SP</div>
+                        <h3>Speed-First UI</h3>
+                        <p>Local-first performance stays lightweight while the surface still looks advanced.</p>
+                        <div class="feature-meta">
+                            <span>Instant response</span>
+                            <span>03</span>
+                        </div>
+                    </article>
+
+                    <article class="feature-card reveal-up tilt-card">
+                        <div class="feature-icon">FX</div>
+                        <h3>Interactive Futurism</h3>
+                        <p>Dynamic glow tracking, layered glass panels, and cinematic backgrounds add depth.</p>
+                        <div class="feature-meta">
+                            <span>Motion system</span>
+                            <span>04</span>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <section id="preview" class="section">
+                <div class="section-heading reveal-up">
+                    <div>
+                        <span class="kicker">Preview</span>
+                        <h2>Dashboard view feels more alive</h2>
+                    </div>
+                    <p>
+                        The landing page now previews the product through animated mini-panels instead of a plain CTA card,
+                        which gives the interface more energy and credibility.
+                    </p>
+                </div>
+
+                <div class="preview-grid">
+                    <article class="preview-card reveal-up tilt-card">
+                        <h3>Financial Overview Matrix</h3>
+                        <p>Condensed panels communicate the core system metrics at a glance.</p>
+
+                        <div class="dashboard-mock">
+                            <div class="mini-panel">
+                                <label>Income stream</label>
+                                <strong>Rs 64,000</strong>
+                            </div>
+                            <div class="mini-panel">
+                                <label>Expense load</label>
+                                <strong>Rs 21,440</strong>
+                            </div>
+                            <div class="mini-panel">
+                                <label>Savings core</label>
+                                <strong>Rs 42,560</strong>
+                            </div>
+                            <div class="mini-panel">
+                                <label>Forecast</label>
+                                <strong>Stable</strong>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="preview-card reveal-up tilt-card">
+                        <h3>Spending Signal</h3>
+                        <p>Animated bars simulate real-time motion and make the section feel less static.</p>
+                        <div class="signal-bars" aria-hidden="true">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </div>
+                        <div class="hero-actions" style="margin-top: 28px;">
+                            <a class="btn-primary" href="dashboard.html">Open Dashboard</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
         </main>
+
+        <footer class="footer">
+            <p>Copyright 2026 Smart Expense Tracker. Built by COZYkrish.</p>
+        </footer>
     </div>
+
+    <script>
+        const currentUser = JSON.parse(localStorage.getItem("currentUser") || "null");
+        const userNameEl = document.getElementById("userName");
+
+        if (userNameEl && currentUser && currentUser.name) {
+            userNameEl.textContent = currentUser.name;
+        }
+
+        document.addEventListener("mousemove", (event) => {
+            const x = (event.clientX / window.innerWidth) * 100;
+            const y = (event.clientY / window.innerHeight) * 100;
+            document.documentElement.style.setProperty("--spot-x", `${x}%`);
+            document.documentElement.style.setProperty("--spot-y", `${y}%`);
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("visible");
+                }
+            });
+        }, { threshold: 0.18 });
+
+        document.querySelectorAll(".reveal-up").forEach((element) => observer.observe(element));
+
+        document.querySelectorAll(".tilt-card").forEach((card) => {
+            card.addEventListener("mousemove", (event) => {
+                const rect = card.getBoundingClientRect();
+                const px = ((event.clientX - rect.left) / rect.width) * 100;
+                const py = ((event.clientY - rect.top) / rect.height) * 100;
+                const rotateY = ((px - 50) / 50) * 5;
+                const rotateX = ((50 - py) / 50) * 5;
+
+                card.style.setProperty("--mx", `${px}%`);
+                card.style.setProperty("--my", `${py}%`);
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+            });
+
+            card.addEventListener("mouseleave", () => {
+                card.style.transform = "";
+                card.style.setProperty("--mx", "50%");
+                card.style.setProperty("--my", "50%");
+            });
+        });
+    </script>
+</body>
 </html>
