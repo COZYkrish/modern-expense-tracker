@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Budget | SmartTracker</title>
+
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/animations.css" />
+    <link rel="stylesheet" href="css/dashboard.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet" />
+
+    <script src="js/session.js"></script>
+    <script src="js/protected-page.js"></script>
+</head>
+<body class="page-enter">
+    <aside class="sidebar">
+        <h2 class="logo">SmartTracker</h2>
+        <div class="user-box">
+            <span class="user-name" id="userName"></span>
+        </div>
+
+        <nav class="menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="expenses.html">Expenses</a>
+            <a href="income.html">Income</a>
+            <a href="analytics.html">Analytics</a>
+            <a class="active" href="budget.html">Budget</a>
+            <a href="settings.html">Settings</a>
+        </nav>
+    </aside>
+
+    <main class="dashboard-main">
+        <header class="dashboard-header">
+            <div>
+                <h1>Budget Planning</h1>
+                <p>Set monthly category limits and compare them with your real expense transactions.</p>
+            </div>
+
+            <button class="btn btn-primary" type="button" onclick="setBudgetPrompt()">
+                Set Monthly Budget
+            </button>
+        </header>
+
+        <section class="card">
+            <p class="label">Total Budget</p>
+            <h2 id="totalBudget">Rs 0</h2>
+        </section>
+
+        <section class="analytics-grid">
+            <div class="card">
+                <h3>Food</h3>
+                <div class="progress"><div class="progress-bar" id="foodBar"></div></div>
+                <p class="text-muted">Rs <span id="foodSpent">0</span> / Rs <span id="foodLimit">0</span></p>
+            </div>
+
+            <div class="card">
+                <h3>Rent</h3>
+                <div class="progress"><div class="progress-bar" id="rentBar"></div></div>
+                <p class="text-muted">Rs <span id="rentSpent">0</span> / Rs <span id="rentLimit">0</span></p>
+            </div>
+
+            <div class="card">
+                <h3>Transport</h3>
+                <div class="progress"><div class="progress-bar" id="transportBar"></div></div>
+                <p class="text-muted">Rs <span id="transportSpent">0</span> / Rs <span id="transportLimit">0</span></p>
+            </div>
+
+            <div class="card">
+                <h3>Shopping</h3>
+                <div class="progress"><div class="progress-bar" id="shoppingBar"></div></div>
+                <p class="text-muted">Rs <span id="shoppingSpent">0</span> / Rs <span id="shoppingLimit">0</span></p>
+            </div>
+        </section>
+    </main>
+
+    <nav class="mobile-nav">
+        <a href="dashboard.html">D</a>
+        <a href="expenses.html">E</a>
+        <a href="income.html">I</a>
+        <a href="analytics.html">A</a>
+    </nav>
+
+    <script>
+        const BUDGET_KEY = "budgetLimits";
+        const categories = ["Food", "Rent", "Transport", "Shopping"];
+
+        function getTransactions() {
+            return JSON.parse(localStorage.getItem("transactions")) || [];
+        }
+
+        function getBudgetLimits() {
+            return JSON.parse(localStorage.getItem(BUDGET_KEY)) || {
+                Food: 0,
+                Rent: 0,
+                Transport: 0,
+                Shopping: 0
+            };
+        }
+
+        function saveBudgetLimits(budgets) {
+            localStorage.setItem(BUDGET_KEY, JSON.stringify(budgets));
+        }
+
+        function getSpentByCategory(category) {
+            return getTransactions()
+                .filter((transaction) => transaction.type === "expense" && transaction.category === category)
+                .reduce((sum, transaction) => sum + Number(transaction.amount || 0), 0);
+        }
+
+        function updateBar(barId, spent, limit) {
+            const percent = limit > 0 ? Math.min((spent / limit) * 100, 100) : 0;
+            const bar = document.getElementById(barId);
+            bar.style.width = `${percent}%`;
+
+            if (percent < 60) bar.className = "progress-bar safe";
+            else if (percent < 90) bar.className = "progress-bar warning";
+            else bar.className = "progress-bar danger";
+        }
+
+        function renderBudgetPage() {
+            const budgets = getBudgetLimits();
+            const totalBudget = categories.reduce((sum, category) => sum + Number(budgets[category] || 0), 0);
+
+            document.getElementById("totalBudget").innerText = `Rs ${totalBudget}`;
+
+            categories.forEach((category) => {
+                const lower = category.toLowerCase();
+                const spent = getSpentByCategory(category);
+                const limit = Number(budgets[category] || 0);
+
+                document.getElementById(`${lower}Spent`).innerText = spent;
+                document.getElementById(`${lower}Limit`).innerText = limit;
+                updateBar(`${lower}Bar`, spent, limit);
+            });
+        }
+
+        function setBudgetPrompt() {
+            const budgets = { ...getBudgetLimits() };
+
+            categories.forEach((category) => {
+                const current = budgets[category] || 0;
+                const next = window.prompt(`Set monthly budget for ${category}`, String(current));
+
+                if (next === null) return;
+
+                const parsed = Number(next);
+                budgets[category] = Number.isFinite(parsed) && parsed >= 0 ? parsed : current;
+            });
+
+            saveBudgetLimits(budgets);
+            renderBudgetPage();
+        }
+
+        document.addEventListener("DOMContentLoaded", renderBudgetPage);
+        window.addEventListener("transactionsUpdated", renderBudgetPage);
+    </script>
+</body>
+</html>
