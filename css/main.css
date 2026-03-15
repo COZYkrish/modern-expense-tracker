@@ -427,3 +427,53 @@ canvas {
     padding-bottom: 70px;
   }
 }
+
+/* ===============================
+   RESPONSIVE FOUNDATION OVERRIDES
+================================ */
+
+body {
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: var(--bg-main);
+}
+
+img,
+svg,
+canvas {
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+@media (max-width: 900px) {
+  .card {
+    padding: 18px;
+  }
+
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  input,
+  select,
+  button {
+    min-height: 46px;
+  }
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 15px;
+  }
+
+  .card {
+    border-radius: 16px;
+    padding: 16px;
+  }
+}

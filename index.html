@@ -782,6 +782,9 @@
             .nav {
                 flex-wrap: wrap;
                 justify-content: center;
+                width: min(var(--max-width), calc(100% - 20px));
+                padding: 12px;
+                gap: 16px;
             }
 
             .logo-wrap {
@@ -792,14 +795,26 @@
             .nav-links {
                 justify-content: center;
                 margin-left: 0;
+                width: 100%;
             }
 
             .hero {
-                padding-top: 24px;
+                margin-top: 20px;
+                padding: 24px 0 28px;
             }
 
             .hero h1 {
                 font-size: clamp(2.5rem, 12vw, 3.6rem);
+            }
+
+            .hero-copy-wrap,
+            .section-heading,
+            .cta-shell {
+                text-align: center;
+            }
+
+            .hero-actions {
+                justify-content: center;
             }
 
             .hero-metrics,
@@ -819,6 +834,90 @@
             .orbit.two {
                 width: 340px;
                 height: 340px;
+            }
+        }
+
+        @media (max-width: 560px) {
+            .nav {
+                border-radius: 18px;
+            }
+
+            .logo-wrap {
+                gap: 10px;
+            }
+
+            .logo-badge {
+                width: 36px;
+                height: 36px;
+                border-radius: 12px;
+            }
+
+            .logo {
+                font-size: 0.9rem;
+            }
+
+            .logo-sub,
+            .user-chip,
+            .nav-link {
+                font-size: 0.78rem;
+            }
+
+            .nav-links > * {
+                width: 100%;
+            }
+
+            .btn-primary,
+            .btn-ghost {
+                width: 100%;
+            }
+
+            .hero,
+            .section,
+            .footer {
+                width: calc(100% - 20px);
+            }
+
+            .section {
+                padding: 18px 0 60px;
+            }
+
+            .hero-panel,
+            .cta-shell,
+            .feature-card,
+            .preview-card {
+                border-radius: 22px;
+            }
+
+            .hero-panel {
+                padding: 18px;
+            }
+
+            .portrait-frame {
+                height: 300px;
+            }
+
+            .portrait-tag,
+            .portrait-kpi {
+                position: static;
+                margin-top: 12px;
+            }
+
+            .panel-topbar,
+            .panel-footer,
+            .hero-actions {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .panel-code,
+            .status-pill,
+            .panel-footer {
+                text-align: center;
+            }
+
+            .section-heading h2,
+            .cta-shell h3 {
+                font-size: clamp(1.35rem, 8vw, 1.9rem);
             }
         }
 
