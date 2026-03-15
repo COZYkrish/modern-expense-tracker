@@ -682,9 +682,51 @@
         .footer {
             width: min(var(--max-width), calc(100% - 32px));
             margin: 0 auto;
-            padding: 0 0 44px;
+            padding: 8px 0 44px;
             color: var(--ink);
             text-align: center;
+        }
+
+        .cta-band {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-band::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at 20% 30%, rgba(77, 246, 210, 0.12), transparent 26%),
+                radial-gradient(circle at 85% 20%, rgba(103, 184, 255, 0.16), transparent 22%);
+            pointer-events: none;
+        }
+
+        .cta-shell {
+            position: relative;
+            display: grid;
+            grid-template-columns: minmax(0, 1.1fr) auto;
+            gap: 24px;
+            align-items: center;
+            padding: 28px;
+            border: 1px solid var(--panel-border);
+            border-radius: 28px;
+            background: linear-gradient(180deg, rgba(8, 15, 28, 0.84), rgba(4, 10, 19, 0.94));
+            box-shadow: 0 22px 60px rgba(0, 0, 0, 0.24);
+        }
+
+        .cta-shell h3 {
+            margin: 0;
+            font-family: "Orbitron", sans-serif;
+            font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .cta-shell p {
+            margin: 12px 0 0;
+            max-width: 620px;
+            color: var(--ink);
         }
 
         .reveal-up {
@@ -721,7 +763,8 @@
         @media (max-width: 1080px) {
             .hero,
             .preview-grid,
-            .feature-grid {
+            .feature-grid,
+            .cta-shell {
                 grid-template-columns: 1fr;
             }
 
@@ -995,6 +1038,23 @@
                             <a class="btn-primary" href="dashboard.html">Open Dashboard</a>
                         </div>
                     </article>
+                </div>
+            </section>
+
+            <section class="section cta-band">
+                <div class="cta-shell reveal-up">
+                    <div>
+                        <span class="kicker">Next step</span>
+                        <h3>Move from static tracking to a live finance system</h3>
+                        <p>
+                            Add income, log expenses, set category budgets, and let the dashboard update your financial picture in real time.
+                        </p>
+                    </div>
+
+                    <div class="hero-actions" style="margin-top: 0;">
+                        <a class="btn-primary" href="dashboard.html">Go To Dashboard</a>
+                        <a class="btn-ghost" href="analytics.html">Open Analytics</a>
+                    </div>
                 </div>
             </section>
         </main>
