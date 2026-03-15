@@ -77,10 +77,13 @@
     </div>
 
     <nav class="mobile-nav">
-        <a href="dashboard.html">D</a>
-        <a href="expenses.html">E</a>
-        <a href="income.html">I</a>
-        <a href="analytics.html">A</a>
+        <a href="dashboard.html">Home</a>
+        <a href="expenses.html">Expense</a>
+        <a class="active" href="income.html">Income</a>
+        <a href="analytics.html">Stats</a>
+        <a href="budget.html">Budget</a>
+        <a href="settings.html">Settings</a>
+        <button type="button" onclick="window.AuthSession.logout('auth/login.html')">Logout</button>
     </nav>
 
     <script src="js/income.js" defer></script>

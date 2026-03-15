@@ -79,6 +79,16 @@
         </section>
     </main>
 
+    <nav class="mobile-nav">
+        <a href="dashboard.html">Home</a>
+        <a href="expenses.html">Expense</a>
+        <a href="income.html">Income</a>
+        <a href="analytics.html">Stats</a>
+        <a href="budget.html">Budget</a>
+        <a class="active" href="settings.html">Settings</a>
+        <button type="button" onclick="window.AuthSession.logout('auth/login.html')">Logout</button>
+    </nav>
+
     <script>
         const themeToggle = document.getElementById("themeToggle");
         const currencySelect = document.getElementById("currencySelect");

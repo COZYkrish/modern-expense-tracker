@@ -87,6 +87,13 @@
         .page-shell {
             position: relative;
             z-index: 1;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        main {
+            flex: 1;
         }
 
         .nav {
@@ -681,7 +688,7 @@
 
         .footer {
             width: min(var(--max-width), calc(100% - 32px));
-            margin: 0 auto;
+            margin: auto auto 0;
             padding: 8px 0 44px;
             color: var(--ink);
             text-align: center;
