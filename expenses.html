@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Income | SmartTracker</title>
+    <title>Expenses | SmartTracker</title>
 
     <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/animations.css" />
@@ -25,8 +25,8 @@
 
         <nav class="menu">
             <a href="dashboard.html">Dashboard</a>
-            <a href="expenses.html">Expenses</a>
-            <a class="active" href="income.html">Income</a>
+            <a class="active" href="expenses.html">Expenses</a>
+            <a href="income.html">Income</a>
             <a href="analytics.html">Analytics</a>
             <a href="budget.html">Budget</a>
             <a href="settings.html">Settings</a>
@@ -36,42 +36,41 @@
     <main class="dashboard-main">
         <header class="dashboard-header">
             <div>
-                <h1>Income Flow</h1>
-                <p>Track salary, freelance, and other earning sources in the same transaction system as the dashboard.</p>
+                <h1>Expense Stream</h1>
+                <p>Add and review expense transactions that feed the dashboard, analytics, and budget pages.</p>
             </div>
 
-            <button class="btn btn-primary" id="addIncomeBtn" type="button">
-                Add Income
+            <button class="btn btn-primary" type="button" onclick="openExpenseModal()">
+                Add Expense
             </button>
         </header>
 
         <section class="card">
             <div class="section-header">
-                <h3>Income Records</h3>
+                <h3>Expense Records</h3>
             </div>
-            <div id="incomeList">
-                <p class="text-muted">No income added yet</p>
-            </div>
+            <div class="expense-list"></div>
         </section>
     </main>
 
-    <div id="incomeModal" class="modal">
+    <div id="expenseModal" class="modal">
         <div class="modal-content">
-            <h3>Add Income</h3>
-            <input id="incomeTitle" type="text" placeholder="Income source" />
-            <input id="incomeAmount" type="number" placeholder="Amount" />
+            <h3>Add Expense</h3>
+            <input id="expenseTitle" type="text" placeholder="Expense title" />
+            <input id="expenseAmount" type="number" placeholder="Amount" />
 
-            <select id="incomeCategory">
-                <option value="Salary">Salary</option>
-                <option value="Freelance">Freelance</option>
-                <option value="Business">Business</option>
-                <option value="Investment">Investment</option>
+            <select id="expenseCategory">
+                <option value="Food">Food</option>
+                <option value="Rent">Rent</option>
+                <option value="Transport">Transport</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Utilities">Utilities</option>
                 <option value="Other">Other</option>
             </select>
 
             <div class="modal-actions">
-                <button id="saveIncomeBtn" class="btn btn-primary" type="button">Save</button>
-                <button id="cancelIncomeBtn" class="btn-outline" type="button">Cancel</button>
+                <button class="btn btn-primary" type="button" onclick="saveExpense()">Save Expense</button>
+                <button class="btn-outline" type="button" onclick="closeExpenseModal()">Cancel</button>
             </div>
         </div>
     </div>
@@ -83,6 +82,6 @@
         <a href="analytics.html">A</a>
     </nav>
 
-    <script src="js/income.js" defer></script>
+    <script src="js/expenses.js" defer></script>
 </body>
 </html>
