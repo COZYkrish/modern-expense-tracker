@@ -54,9 +54,9 @@ function renderIncomeList() {
         return;
     }
 
-//     income.forEach((transaction) => {
-//         const row = document.createElement("div");
-//         row.className = "transaction-row";
+    income.forEach((transaction) => {
+        const row = document.createElement("div");
+        row.className = "transaction-row";
 
         row.innerHTML = `
             <div>
