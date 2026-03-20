@@ -58,8 +58,8 @@ function renderIncomeList() {
 //         const row = document.createElement("div");
 //         row.className = "transaction-row";
 
-//         row.innerHTML = `
-//             <div>
+        row.innerHTML = `
+            <div>
                 <strong>${transaction.title}</strong>
                 <p class="text-muted">${transaction.category}</p>
             </div>
