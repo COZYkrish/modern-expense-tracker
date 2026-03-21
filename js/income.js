@@ -60,11 +60,11 @@ function renderIncomeList() {
 
 //         row.innerHTML = `
 //             <div>
-//                 <strong>${transaction.title}</strong>
-//                 <p class="text-muted">${transaction.category}</p>
-//             </div>
-//             <span class="income">+Rs ${transaction.amount}</span>
-//         `;
+                <strong>${transaction.title}</strong>
+                <p class="text-muted">${transaction.category}</p>
+            </div>
+            <span class="income">+Rs ${transaction.amount}</span>
+        `;
 
         container.appendChild(row);
     });
