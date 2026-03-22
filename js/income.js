@@ -54,21 +54,21 @@ function renderIncomeList() {
         return;
     }
 
-    income.forEach((transaction) => {
-        const row = document.createElement("div");
-        row.className = "transaction-row";
+//     income.forEach((transaction) => {
+//         const row = document.createElement("div");
+//         row.className = "transaction-row";
 
-        row.innerHTML = `
-            <div>
-                <strong>${transaction.title}</strong>
-                <p class="text-muted">${transaction.category}</p>
-            </div>
-            <span class="income">+Rs ${transaction.amount}</span>
-        `;
+//         row.innerHTML = `
+//             <div>
+//                 <strong>${transaction.title}</strong>
+//                 <p class="text-muted">${transaction.category}</p>
+//             </div>
+//             <span class="income">+Rs ${transaction.amount}</span>
+//         `;
 
-        container.appendChild(row);
-    });
-}
+//         container.appendChild(row);
+//     });
+// }
 
 document.addEventListener("DOMContentLoaded", () => {
     renderIncomeList();
