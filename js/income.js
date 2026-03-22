@@ -66,9 +66,9 @@ function renderIncomeList() {
 //             <span class="income">+Rs ${transaction.amount}</span>
 //         `;
 
-//         container.appendChild(row);
-//     });
-// }
+        container.appendChild(row);
+    });
+}
 
 document.addEventListener("DOMContentLoaded", () => {
     renderIncomeList();
