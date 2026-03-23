@@ -2,9 +2,9 @@
 //     return JSON.parse(localStorage.getItem("transactions")) || [];
 // }
 
-// function saveTransactions(txns) {
-//     localStorage.setItem("transactions", JSON.stringify(txns));
-// }
+function saveTransactions(txns) {
+    localStorage.setItem("transactions", JSON.stringify(txns));
+}
 
 function openIncomeModal() {
     document.getElementById("incomeModal").style.display = "flex";
