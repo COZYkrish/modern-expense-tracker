@@ -1,6 +1,6 @@
-// function getTransactions() {
-//     return JSON.parse(localStorage.getItem("transactions")) || [];
-// }
+function getTransactions() {
+    return JSON.parse(localStorage.getItem("transactions")) || [];
+}
 
 function saveTransactions(txns) {
     localStorage.setItem("transactions", JSON.stringify(txns));
