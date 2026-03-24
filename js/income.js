@@ -6,9 +6,9 @@
 //     localStorage.setItem("transactions", JSON.stringify(txns));
 // }
 
-// function openIncomeModal() {
-//     document.getElementById("incomeModal").style.display = "flex";
-// }
+function openIncomeModal() {
+    document.getElementById("incomeModal").style.display = "flex";
+}
 
 function closeIncomeModal() {
     document.getElementById("incomeModal").style.display = "none";
