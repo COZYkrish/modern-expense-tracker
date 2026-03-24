@@ -1,18 +1,18 @@
-function getTransactions() {
-    return JSON.parse(localStorage.getItem("transactions")) || [];
-}
+// function getTransactions() {
+//     return JSON.parse(localStorage.getItem("transactions")) || [];
+// }
 
-function saveTransactions(txns) {
-    localStorage.setItem("transactions", JSON.stringify(txns));
-}
+// function saveTransactions(txns) {
+//     localStorage.setItem("transactions", JSON.stringify(txns));
+// }
 
-function openIncomeModal() {
-    document.getElementById("incomeModal").style.display = "flex";
-}
+// function openIncomeModal() {
+//     document.getElementById("incomeModal").style.display = "flex";
+// }
 
-function closeIncomeModal() {
-    document.getElementById("incomeModal").style.display = "none";
-}
+// function closeIncomeModal() {
+//     document.getElementById("incomeModal").style.display = "none";
+// }
 
 function saveIncome() {
     const title = document.getElementById("incomeTitle").value.trim();
