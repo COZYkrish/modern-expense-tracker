@@ -10,9 +10,9 @@
 //     document.getElementById("incomeModal").style.display = "flex";
 // }
 
-// function closeIncomeModal() {
-//     document.getElementById("incomeModal").style.display = "none";
-// }
+function closeIncomeModal() {
+    document.getElementById("incomeModal").style.display = "none";
+}
 
 function saveIncome() {
     const title = document.getElementById("incomeTitle").value.trim();
